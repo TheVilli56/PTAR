@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNAM - FES Acatlán - Sólidos de Muestreo</title>
+    <!-- Incluimos los estilos específicos para SST y los generales -->
+    <link rel="stylesheet" href="css_admin/riego_styles.css"> 
+    <link rel="stylesheet" href="css_admin/sst_styles.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    
+    <header class="top-bar">
+        <div class="logo-section">
+            <img src="images/logoUnam.png" alt="UNAM Logo">
+            <div class="logo-text">
+            </div>
+        </div>
+        <div class="logo-section acatlan-logo-section">
+            <img src="images/logoAcatlan.png" alt="FES Acatlán Logo">
+            <div class="acatlan-text">
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="riego.html" class="nav-link">Riego</a>
+        <a href="sst.html" class="nav-link active">Sólidos de Muestreo</a>
+    </nav>
+
+    <nav class="sub-navbar">
+        <a href="#visualizar-datos" class="tab-link active" data-target="visualizar-datos">Visualizar Datos</a>
+        <a href="#registrar-datos" class="tab-link" data-target="registrar-datos">Registrar Datos</a>
+        <a href="#graficas" class="tab-link" data-target="graficas">Gráficas</a>
+    </nav>
+
+    <main class="data-content">
+        <div id="visualizar-datos" class="content-section active">
+            <div class="filters-card">
+                <div class="filter-group">
+                    <label for="mes">Mes:</label>
+                    <select id="mes">
+                        <option value="">Todos</option>
+                        <option value="1">Enero</option>
+                        <option value="2">Febrero</option>
+                        <option value="3">Marzo</option>
+                        <option value="4">Abril</option>
+                        <option value="5">Mayo</option>
+                        <option value="6">Junio</option>
+                        <option value="7">Julio</option>
+                        <option value="8">Agosto</option>
+                        <option value="9">Septiembre</option>
+                        <option value="10">Octubre</option>
+                        <option value="11">Noviembre</option>
+                        <option value="12">Diciembre</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="anio">Año:</label>
+                    <select id="anio">
+                        <option value="">Todos</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="bomba">Punto de Muestreo:</label>
+                    <select id="bomba">
+                        <option value="csc">CSC</option>
+                        <option value="tec01">TEC-01</option>
+                        <option value="rec01">REC-01 </option>
+                        <option value="rac">RAC </option>
+                    </select>
+                </div>
+                <button id="buscar-datos">Buscar</button>
+            </div>
+            <div class="table-container">
+                <table id="tabla-datos">
+                    <thead>
+                        <tr></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="5">Cargando datos...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="paginacion"></div>
+        </div>
+
+        <div id="registrar-datos" class="content-section">
+            <div class="form-card">
+                <h2>Registrar Sólidos de Muestreo</h2>
+                <form id="form-registro">
+                    
+                    <div class="input-group full-width">
+                        <label for="id_usuario">Responsable:</label>
+                        <select id="id_usuario" name="id_usuario" required>
+                            <option value="">Selecciona un responsable</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="fecha_registro">Fecha:</label>
+                        <input type="date" id="fecha_registro" name="fecha" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="hora_registro">Hora:</label>
+                        <input type="time" id="hora_registro" name="hora" required>
+                    </div>
+
+                    <hr class="full-width"><h3>Datos Tanque de Ecualización</h3>
+                    <div class="input-group">
+                        <label for="tec01_nivel">Nivel:</label>
+                        <input type="number" step="0.01" id="tec01_nivel" name="tec01_nivel" placeholder="m">
+                    </div>
+                    <div class="input-group">
+                        <label for="tec01_ph">pH:</label>
+                        <input type="number" step="0.01" id="tec01_ph" name="tec01_ph" placeholder="pH">
+                    </div>
+                    <div class="input-group">
+                        <label for="tec01_dqo">DQO (mg/L):</label>
+                        <input type="number" step="0.01" id="tec01_dqo" name="tec01_dqo" placeholder="mg/L">
+                    </div>
+                    <div class="input-group">
+                        <label for="tec01_t">Temperatura (°C):</label>
+                        <input type="number" step="0.01" id="tec01_t" name="tec01_t" placeholder="°C">
+                    </div>
+                    
+                    <hr class="full-width"><h3>Datos Reactor Anaerobio</h3>
+                    <div class="input-group">
+                        <label for="rac_dqo">DQO (mg/L):</label>
+                        <input type="number" step="0.01" id="rac_dqo" name="rac_dqo" placeholder="mg/L">
+                    </div>
+                    <div class="input-group">
+                        <label for="rac_ph">pH:</label>
+                        <input type="number" step="0.01" id="rac_ph" name="rac_ph" placeholder="pH">
+                    </div>
+                    <div class="input-group">
+                        <label for="rac_t">Temperatura (°C):</label>
+                        <input type="number" step="0.01" id="rac_t" name="rac_t" placeholder="°C">
+                    </div>
+                    
+                    <hr class="full-width"><h3>Datos Reactor Aerobio</h3>
+                    <div class="input-group">
+                        <label for="rec01_ssed">SSED:</label>
+                        <input type="number" step="0.01" id="rec01_ssed" name="rec01_ssed" placeholder="mL/L">
+                    </div>
+                    <div class="input-group">
+                        <label for="rec01_od">OD (mg/L):</label>
+                        <input type="number" step="0.01" id="rec01_od" name="rec01_od" placeholder="mg/L">
+                    </div>
+                    <div class="input-group">
+                        <label for="rec01_ph">pH:</label>
+                        <input type="number" step="0.01" id="rec01_ph" name="rec01_ph" placeholder="pH">
+                    </div>
+                    <div class="input-group">
+                        <label for="rec01_t">Temperatura (°C):</label>
+                        <input type="number" step="0.01" id="rec01_t" name="rec01_t" placeholder="°C">
+                    </div>
+
+                    <hr class="full-width"><h3>Datos Clarificador Secundario</h3>
+                    <div class="input-group">
+                        <label for="csc_dqo">DQO (mg/L):</label>
+                        <input type="number" step="0.01" id="csc_dqo" name="csc_dqo" placeholder="mg/L">
+                    </div>
+                    <div class="input-group">
+                        <label for="csc_ph">pH:</label>
+                        <input type="number" step="0.01" id="csc_ph" name="csc_ph" placeholder="pH">
+                    </div>
+                    <div class="input-group">
+                        <label for="csc_t">Temperatura (°C):</label>
+                        <input type="number" step="0.01" id="csc_t" name="csc_t" placeholder="°C">
+                    </div>
+
+                    <div class="input-group full-width">
+                        <button type="submit" id="btn-registrar">Registrar</button>
+                    </div>
+                </form>
+
+                <hr class="full-width">
+            </div>
+            <div id="mensaje-status"></div>
+        </div>
+
+        <div id="graficas" class="content-section">
+            <div class="filters-card graph-filters-card">
+                <h2>Gráfica de Parámetros por Día</h2>
+                <div class="filter-group">
+                    <label for="punto-grafica">Punto de Muestreo:</label>
+                    <select id="punto-grafica">
+                        <option value="csc">CSC (Clarificador Secundario)</option>
+                        <option value="tec01">TEC-01 (Tanque Ecualización)</option>
+                        <option value="rec01">REC-01 (Reactor Aerobio)</option>
+                        <option value="rac">RAC (Reactor Anaerobio)</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="parametro-grafica">Parámetro:</label>
+                    <select id="parametro-grafica">
+                        <!-- Las opciones se llenan dinámicamente con JS -->
+                        <option value="">Selecciona un punto</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="fecha-inicio-grafica">Fecha Inicio:</label>
+                    <input type="date" id="fecha-inicio-grafica">
+                </div>
+                <div class="filter-group">
+                    <label for="fecha-fin-grafica">Fecha Fin:</label>
+                    <input type="date" id="fecha-fin-grafica">
+                </div>
+                <button id="generar-grafica-sst">Generar Gráfica</button>
+            </div>
+
+            <div class="graph-container">
+                <canvas id="parametroChart"></canvas>
+            </div>
+            
+            <button id="descargar-grafica-sst" class="download-button" style="display: none;">
+                <i class="fas fa-download"></i> Descargar Gráfica (JPG)
+            </button>
+            <div id="promedio-container" class="data-summary-card">
+                <!-- Aquí se mostrará el promedio del parámetro -->
+            </div>
+        </div>
+        <div id="modal-modificar" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>Modificar Registro</h2>
+                <form id="form-modificar">
+                    <input type="hidden" id="modal_reg" name="reg">
+                    <input type="hidden" id="modal_tabla" name="tabla">
+                    
+                    <div id="modal-fields-container">
+                        </div>
+
+                    <div class="input-group full-width">
+                        <button type="submit" class="btn btn-submit">Guardar Cambios</button>
+                    </div>
+                </form>
+                <div id="modal-mensaje-status" class="message-box"></div>
+            </div>
+        </div>
+    </main>
+
+    <img src="images/fondo.jpeg" alt="Fondo de planta de tratamiento" class="background-image">
+    
+    <!-- Librerías de Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+
+    <!-- Scripts de la aplicación -->
+    <script src="scripts/sst.js"></script>
+    <script src="scripts/graficas_sst.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+.graph-filters-card {
+    /* Usamos la clase base filters-card de riego_styles.css */
+    width: 95%;
+    max-width: 1400px;
+    padding: 25px;
+    /* Permite que los elementos se distribuyan en varias líneas si es necesario */
+    flex-wrap: wrap; 
+    justify-content: center;
+}
+
+.graph-filters-card .filter-group {
+    /* Distribución uniforme de los filtros */
+    margin-bottom: 10px;
+    flex-basis: auto; /* Permite que el elemento tome el ancho necesario */
+    min-width: 200px; /* Ancho mínimo para cada filtro */
+}
+
+/* Estilo para los botones de acción en la sección de gráficas */
+#generar-grafica-sst, 
+#descargar-grafica-sst {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+#generar-grafica-sst {
+    background-color: #f7a900; /* Amarillo */
+    color: #2b3b4f;
+    border: none;
+}
+
+#generar-grafica-sst:hover {
+    background-color: #ffc44d;
+}
+
+#descargar-grafica-sst {
+    /* Reutiliza el estilo general de descarga, solo asegura el margen */
+    margin-top: 20px;
+}
+
+.graph-container {
+    background-color: rgba(255, 255, 255, 0.95); /* Fondo blanco casi opaco */
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    width: 95%;
+    max-width: 1400px;
+    height: 550px; /* Altura generosa para la gráfica */
+    margin: 20px auto;
+    position: relative;
+    color: #2b3b4f; /* Asegura texto oscuro dentro de la gráfica */
+}
+
+.data-summary-card {
+    /* Estilo para mostrar el promedio */
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgba(6, 69, 111, 0.9); /* Azul UNAM */
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    width: 95%;
+    max-width: 1400px;
+}
+
+/* --- Estilos para Botones de Acción en la Tabla --- */
+.action-buttons-container {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+.action-button {
+    padding: 5px 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.modify-button {
+    background-color: #007bff; /* Azul para Modificar */
+}
+
+.modify-button:hover {
+    background-color: #0056b3;
+}
+
+.delete-button {
+    background-color: #dc3545; /* Rojo para Eliminar */
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilos de mensaje general */
+.message-box {
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.message-box.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message-box.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+

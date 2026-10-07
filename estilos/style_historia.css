@@ -1,0 +1,376 @@
+.header_1{
+	background-color: #123456;
+    height: auto;
+    min-height: 100px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 0 auto; 
+    
+    flex-wrap: wrap;
+}
+.ES_D{
+    gap: 40px;
+}
+
+.ES_D, .ES_I {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; 
+    
+}
+
+
+.A_H {
+    height: auto;
+    min-height: 50px;
+    padding: 0;
+    background-color: #D59F0F;
+    margin: 0 auto; 
+   
+}
+
+.AHA {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 90px; 
+    flex-wrap: wrap; 
+}
+
+.AHA a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    font-family: Arial, sans-serif; 
+    text-align: justify;
+}
+
+.AHA a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+
+@media (max-width: 1024px) {
+    .header_1 {
+        padding: 10px 3%;
+        min-height: 90px;
+    }
+    
+    .ES_D img {
+        width: 60px;
+    }
+    
+    .ES_I img {
+        width: 130px;
+    }
+    
+    .AHA {
+        gap: 20px;
+        padding: 8px 15px;
+    }
+    
+    .AHA a {
+        font-size: 14px;
+        padding: 4px 8px;
+    }
+}
+
+
+
+
+@media (max-width: 400px) {
+    .AHA {
+        gap: 8px;
+    }
+    
+    .AHA a {
+        font-size: 11px;
+        padding: 2px 4px;
+    }
+    
+    .ES_D img {
+        width: 40px;
+    }
+    
+    .ES_I img {
+        width: 90px;
+    }
+}
+
+
+@media (min-width: 1400px) {
+    .header_1, .A_H {
+        margin: 0 auto;
+    }
+}
+
+.menu-hamburguesa {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+
+@media (max-width: 480px) {
+    .menu-hamburguesa {
+        display: block;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+    }
+    
+    .AHA {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #D59F0F;
+        padding: 15px;
+        gap: 10px;
+        z-index: 1000;
+    }
+    
+    .AHA.mostrar {
+        display: flex;
+    }
+}
+h1{
+    color: #123456;
+}
+
+body{
+	background-color:rgb(227, 237, 248);
+	margin: 0;
+    padding: 0;
+
+}
+
+/*HISTORIA DE LA PTAR*/
+.azulH{
+    background-color: #123456;
+    margin-left: 100px;
+    margin-right: 100px;
+    min-height: 100vh; 
+    padding-top: 1px;
+}
+.at{
+    transform: translateX(100px);
+    transition: all 0.8s ease-out;
+
+}
+.at.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+.tiH{
+    color: white;
+    font-size: 40px;
+    font-family: Arial, sans-serif; 
+    text-align: justify;
+
+}
+    
+
+.tituloh{
+    margin-top: 70px;
+    margin-left: 100px;
+
+}
+.HisC{
+    display: flex;
+    /*align-items: center;*/
+    gap:25px;
+    justify-content: flex-start;
+    flex-wrap: nowrap; 
+    overflow-x: auto; 
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 50%;
+    scroll-behavior: smooth;
+    cursor: grab;
+    height: 600px;
+    background-color: #123456;
+    margin-left: 80px;
+    margin-right: 100px;
+    margin-top: 50px;
+    padding-left: 20px;
+    padding-top: 20px;
+    /*background-color: aqua;*/
+  
+}
+.HisC {
+    scrollbar-width: none;     /* oculta scrollbar en Firefox */
+}
+
+
+.cartaH{
+    flex: 0 0 auto;               /* tamaño fijo, no se estira */
+    width: 220px;
+    height: 250px;
+    background-color: blue;
+    border-radius: 10px;
+    /*overflow: hidden;*/
+    overflow: visible;
+    position: relative;
+    scroll-snap-align: center;    /* snap al centro */
+    transition: transform 0.5s;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+
+
+}
+
+
+/* Hover opcional */
+.cartaH:hover {
+    transform: scale(1.1);
+}
+
+.cartaI {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10px; /* Hereda los bordes redondeados */
+    position: relative;
+}
+
+
+.cartaIT {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2); 
+    color: white;
+    display: flex;
+    
+    padding: 5px;
+    box-sizing: border-box;
+    font-size: 20px;
+    z-index: 2;
+}
+
+.HisC .cartaH .cartaI .cartaIT p {
+    font-family: Arial, sans-serif; 
+    font-size: 25px;
+    text-align: justify;
+    padding-left: 20px;
+}
+
+
+
+
+.cartaH .cartaI img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center; 
+    display: block;
+}
+.HisC .cartaH .cartaTE .cartaE p {
+    font-family: Arial, sans-serif; 
+
+    text-align: justify;
+}
+
+
+.HisC .cartaH .cartaTE .cartaTe p {
+    font-family: Arial, sans-serif; 
+
+    text-align: justify;
+}
+
+.cartaE{
+    margin-left: 5px;
+    padding:5px ;
+}
+
+.cartaH .cartaTE {
+    /*
+    position: absolute;
+    bottom: -50%;
+    padding: 15%;
+    opacity: 0;
+    transition: 0.5s bottom, 1.75s opacity;
+    */
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    width: 190px;
+    background-color:  #a9ccef  ;
+    margin-top: 5px;
+    padding: 15px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.4s ease-in-out;
+    z-index: 10;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+
+}
+.cartaH .cartaTE .cartaE{
+    background-color:  #8dbef0;
+    border-radius: 10px;
+    height: 40px;
+    padding:5px;
+    text-align: center;
+}
+.cartaH .cartaTE .cartaE p{
+    font-family: Arial, sans-serif; 
+    font-size: 23px;
+    text-align: center;
+    padding-left: 32%;
+}
+.cartaH .cartaTE .cartaTe{
+    margin-top: 20px;
+    padding: 5px;
+}
+.Listal{
+    font-family: Arial, sans-serif; 
+    font-size: 14px;
+    text-align: justify;
+    
+}
+
+
+.cartaTE p {
+    font-size: 14px;
+    margin-top: 3px;
+}
+
+/* Hover del bloque de texto */
+.cartaH:hover .cartaTE {
+    /*
+    bottom: 0;
+    opacity: 1;
+    */
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+
+}
+
+/* Cursor mientras arrastras */
+.HisC.active {
+    cursor: grabbing;
+}
+
+
+.AH{
+    margin-top: 300px;
+    margin-left: 300px;
+    position: absolute;
+}

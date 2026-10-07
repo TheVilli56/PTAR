@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="estilos/style_im.css">
+</head>
+<body>
+
+	<div>
+		<header class="header_1">
+			<div class= "ES_D">
+				
+				<img src="ima/unamL.png" alt="Imagen 1", width="200px">
+			
+					
+			</div>
+			<div class= "ES_I">
+				<img src="ima/fesl.png" alt="Imagen 1", width="250px">
+					
+			</div>
+			
+		</header>
+		<div class="A_H">
+			<div class="AHA">
+				<a href="index.html" >Inicio</a> 
+				<a href="historia.html">Historia</a> 
+				<a href="proceso.html">Proceso</a> 
+				<a href="im.html">Impacto ambiental</a> 
+				<a href="proyectos.html">Proyectos</a> 
+				<a href="nosotros.html">Nosotros</a> 
+				<a href="Admin_page/index.html">Iniciar seción</a> 
+
+			</div>
+			<button class="menu-hamburguesa" id="menuToggle">☰</button>
+		</div>
+
+	</div>
+
+	<main>
+		<script>
+		
+		document.addEventListener('DOMContentLoaded', () => {
+			
+			const reveals = document.querySelectorAll('.susten');
+
+			const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+				entry.target.classList.add('visible');
+				} else {
+				entry.target.classList.remove('visible');
+				}
+			});
+			}, {
+			threshold: 0.25 
+			});
+
+			reveals.forEach(el => observer.observe(el));
+		});
+		</script>
+		<div class="susten">
+			<h1 class="tiS">Sustentabilidad y compromiso institucional</h1>
+			<div class="primerC">
+				
+				<img src="ima/alto.jpeg" width="250px"  alt="pasto" >
+				
+				<p class="justificado">La PTAR de la FES Acatlán es mucho más que una obra de ingeniería ambiental: es una expresión tangible del compromiso de la UNAM con la sostenibilidad, la educación ambiental y la innovación tecnológica.
+					Este proyecto se integra a la estrategia de la Universidad Sustentable, contribuyendo directamente a los objetivos institucionales de reducir el impacto ecológico, fomentar el uso eficiente de los recursos naturales y formar una comunidad universitaria consciente y participativa.
+				</p>
+
+				
+				
+			</div>
+			<div class="cajaAA">
+				<div >
+					<h2>Aportes clave al desarrollo sustentable:</h2>
+					<p class="justificado">
+						<ul>
+							<li class="lir"><b class="negAz">Reaprovechamiento del agua tratada:</b> El agua tratada es utilizada para riego de las áreas verdes de la zona deportiva, disminuyendo la dependencia del agua potable.</li>
+							<li class="lir"><b class="negAz">Reducción de emisiones contaminantes</b>Al verter agua tratada al sistema de drenaje se contribuye con mejorar el medio ambiente.</li>
+							<li class="lir"><b class="negAz">Gestión circular de residuos,</b>como el tratamiento y reutilización de lodos estabilizados en forma de composta.</li>
+							<li class="lir"><b class="negAz">Vinculación con la formación académica:</b>La PTAR sirve como plataforma para prácticas profesionales; residencias profesionales; servicio social; y para el desarrollo de proyectos de investigación.</li>
+							<li class="lir"><b class="negAz">Educación ambiental activa:</b>Se brinda educación ambiental al interior de la PTAR mediante visitas guiadas, talleres y actividades con estudiantes y público externo.</li>
+						</ul>
+	
+					</p>
+				</div>
+				<img src="ima/se.jpeg" width="300px" alt="proceso">
+			</div>
+			<div>
+				<p class="justificado">
+					Con una visión a largo plazo, la Planta de Tratamiento de Aguas Residuales de la FES Acatlán se posiciona como un modelo de infraestructura sustentable universitaria, en el que la ciencia, la tecnología y el compromiso ambiental convergen para construir un futuro mejor.
+				</p>
+			</div>
+
+		</div>
+		<div class="susten">
+			<div class="cajaA">
+				<h1 class="tiS1">Sustentabilidad y Beneficios Ambientales</h1>
+				<div class="caja_azul">
+					<img src="ima/dep.jpg" >
+					<p class="justificado1">
+						Desde su puesta en marcha, la Planta de Tratamiento de Aguas Residuales de la FES Acatlán ha generado un impacto positivo significativo tanto en el entorno ecológico; así como en el aprovechamiento y optimización de los recursos hídricos dentro de nuestro campus. Una de sus principales contribuciones es la reducción del uso de agua potable para el riego de áreas verdes. Tan solo en 2019, se reutilizaron más de 5 millones de litros de agua tratada para mantener en óptimas condiciones las áreas verdes de la facultad; es importante mencionar que del 2018 al 2025, se han utilizado más de 18 millones de litros de agua tratada para dicha actividad. Este volumen representa un ahorro económico considerable y una acción directa en favor del uso responsable del recurso hídrico.
+
+					</p>
+					
+
+				</div>
+				<br>
+				<div	class="justificado1">
+					<div class="CM">
+						<div class="flecha flecha-1"></div>
+        				<div class="flecha flecha-2"></div>
+						<div class="circulo">
+							<p class="lir1">Tratar localmente las aguas residuales generadas por la comunidad universitaria.</p>
+
+						</div>
+						
+						<div class="circulo">
+							<p class="lir1">Se logra una disminución significativa en las descargas a la red municipal. </p>
+
+						</div>
+						<div class="circulo">
+							<p class="lir1">Contribuyendo así a la preservación del medio ambiente urbano. </p>
+
+						</div>
+
+					</div>
+					<script>
+					// JavaScript para ajustar posición de flechas CON OFFSET
+						function updateArrowPositions() {
+							const container = document.querySelector('.CM');
+							const circles = document.querySelectorAll('.circulo');
+							const arrows = document.querySelectorAll('.flecha');
+							
+							if (circles.length >= 3 && arrows.length >= 2) {
+								const rect1 = circles[0].getBoundingClientRect();
+								const rect2 = circles[1].getBoundingClientRect();
+								const rect3 = circles[2].getBoundingClientRect();
+								
+								// OFFSETS - AJUSTA ESTOS VALORES
+								const offsetFlecha1 = -205; // ← Mueve flecha 1 (positivo = derecha, negativo = izquierda)
+								const offsetFlecha2 = -205; // ← Mueve flecha 2 (positivo = derecha, negativo = izquierda)
+								
+								// Flecha entre círculo 1 y 2
+								arrows[0].style.left = (rect1.right + (rect2.left - rect1.right) / 2 - 30 + offsetFlecha1) + 'px';
+								
+								// Flecha entre círculo 2 y 3
+								arrows[1].style.left = (rect2.right + (rect3.left - rect2.right) / 2 - 30 + offsetFlecha2) + 'px';
+							}
+						}
+
+						// Ejecutar al cargar y al redimensionar
+						window.addEventListener('load', updateArrowPositions);
+						window.addEventListener('resize', updateArrowPositions);
+
+					</script>
+
+					
+
+				</div>
+				<br>
+				<div class="cajaB ">
+					<h2	class="ca2"	>Beneficios destacados:</h2>
+					<p class="justificado">
+						<ul>
+							<li class="lir">Reutilización eficiente del agua tratada para riego de áreas verdes de la zona deportiva.</li>
+							<li class="lir">Ahorro considerable en la utilización de agua potable para riego de las áreas verdes.</li>
+							<li class="lir">Disminución del impacto ecológico por vertido de aguas contaminadas.</li>
+							<li class="lir">Contribución directa a los objetivos del Campus Sustentable impulsado por la Coordinación Universitaria para la Sustentabilidad (COUS).</li>
+							<li class="lir">Beneficios sociales tales como el fomento de la actividad física, reducción del estrés, y la interacción entre la comunidad universitaria.</li>
+							
+						</ul>
+
+					</p>
+				</div>
+				<br>
+				<div class="divGot">
+					<div class="IZGOT">
+						<p class="justificado1">Con estos resultados, la Planta de Tratamiento de Aguas Residuales de la FES Acatlán no solo cumple una función técnica, sino que se ha convertido en un ejemplo de infraestructura verde al servicio de la educación, el ahorro de recursos y la resiliencia ambiental.</p>
+					</div>
+					<div class="got">
+						<div class="boton-3d" id="boton3D">
+							<div class="etiqueta-boton">+18,166,408 L</div>
+						</div>
+
+						<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+						<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+						<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+						<script>
+							// --- Configuración del canvas pequeño ---
+							const botonContainer = document.getElementById('boton3D');
+							const width = botonContainer.clientWidth;
+							const height = botonContainer.clientHeight;
+
+							// --- Escena ---
+							const scene = new THREE.Scene();
+							scene.background = new THREE.Color(0xf8f8f8); // Fondo claro
+							
+							// Cámara con ángulo más pequeño para el canvas reducido
+							const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 1000);
+							
+							// Renderer configurado para el tamaño del botón
+							const renderer = new THREE.WebGLRenderer({ 
+								antialias: true,
+								alpha: true // Permite fondo transparente si lo necesitas
+							});
+							renderer.setSize(width, height);
+							botonContainer.appendChild(renderer.domElement);
+
+							// --- Luz mejorada para vista pequeña ---
+							const light = new THREE.DirectionalLight(0xffffff, 1);
+							light.position.set(3, 5, 5);
+							scene.add(light);
+							
+							const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+							scene.add(ambientLight);
+
+							// --- Cargar modelo ---
+							const loader = new THREE.GLTFLoader(); 
+							let modeloCargado = null;
+
+							loader.load('gotaG.glb', function(gltf) {
+								const modelo = gltf.scene;
+								modeloCargado = modelo;
+
+								// Ajustar escala para el botón pequeño
+								modelo.scale.set(1.5, 1.5, 1.5);
+								
+								// Centrar el modelo
+								const box = new THREE.Box3().setFromObject(modelo);
+								const center = box.getCenter(new THREE.Vector3());
+								modelo.position.sub(center);
+
+								
+								// Aplicar material toon
+								/*
+								modelo.traverse((child) => {
+									if (child.isMesh) {
+										child.material = new THREE.MeshToonMaterial({
+											color: 0x006c7a
+										});
+									}
+								});
+								
+							
+								modelo.traverse((child) => {
+									if (child.isMesh) {
+										switch (child.name) {
+											case "cuerpo":
+												child.material = new THREE.MeshToonMaterial({ color: 0x006c7a }); // azul oscuro
+												break;
+											case "boca":
+												child.material = new THREE.MeshToonMaterial({ color: 0x000000 }); // azul oscuro
+												break;    
+											case "ojoD":
+											case "ojoI":
+												child.material = new THREE.MeshToonMaterial({ color: 0xffffff }); // blanco
+												break;
+											case "pupilai":
+											case "pupilad":
+												child.material = new THREE.MeshToonMaterial({ color: 0x000000 }); // negro
+												break;
+											default:
+												child.material = new THREE.MeshToonMaterial({ color: 0xcccccc }); // gris claro por defecto
+												break;
+										}
+									}
+								});
+
+								*/
+								scene.add(modelo);
+
+							}, undefined, function(error){
+								console.error('Error cargando modelo:', error);
+							});
+
+							// --- Controles (deshabilitados o limitados) ---
+							const controls = new THREE.OrbitControls(camera, renderer.domElement);
+							controls.enableZoom = false; // Sin zoom en el botón
+							controls.enablePan = false; // Sin desplazamiento
+							controls.rotateSpeed = 0.5; // Rotación más lenta
+
+							// --- Cámara ---
+							camera.position.z = 8;
+
+							// --- Evento de click en el botón ---
+							botonContainer.addEventListener('click', function(event) {
+								event.preventDefault();
+								hacerSaltarModelo();
+								
+								// También puedes agregar otras acciones aquí
+								console.log('Botón 3D clickeado!');
+							});
+
+							// --- Evento de click derecho ---
+							botonContainer.addEventListener('contextmenu', function(event) {
+								event.preventDefault();
+								hacerSaltarModelo();
+							});
+						
+							let animacionActiva = null;
+							function hacerSaltarModelo() {
+								if (!modeloCargado  ) return;
+
+
+								
+								const modelo = modeloCargado;
+								const posicionOriginalY = 0;
+								if (animacionActiva) {
+									cancelAnimationFrame(animacionActiva);
+									modelo.position.y = posicionOriginalY; // Reset inmediato
+								}
+								
+								let altura = 0;
+								const velocidad = 0.15;
+								
+								function animarSalto() {
+									altura += velocidad;
+									modelo.position.y = posicionOriginalY + Math.sin(altura) * 0.8;
+									
+									if (altura < Math.PI) {
+										requestAnimationFrame(animarSalto);
+									} else {
+										modelo.position.y = posicionOriginalY;
+									}
+								}
+								
+								animarSalto();
+							}
+							// --- Animación ---
+							function animate() {
+								requestAnimationFrame(animate);
+								controls.update();
+								renderer.render(scene, camera);
+							}
+							animate();
+
+							// --- Resize para el botón ---
+							window.addEventListener("resize", () => {
+								// Si quieres que el botón sea responsive
+								const newWidth = botonContainer.clientWidth;
+								const newHeight = botonContainer.clientHeight;
+								
+								camera.aspect = newWidth / newHeight;
+								camera.updateProjectionMatrix();
+								renderer.setSize(newWidth, newHeight);
+							});
+
+							// --- Rotación automática suave ---
+							let tiempo = 0;
+							function animarRotacion() {
+								requestAnimationFrame(animarRotacion);
+								tiempo += 0.01;
+								
+								if (modeloCargado) {
+									modeloCargado.rotation.y = Math.sin(tiempo) * 0.2;
+								}
+							}
+							animarRotacion();
+						</script>
+
+					</div>
+
+				</div>
+				
+
+			</div>
+
+		</div>
+
+		
+		
+	</main>	
+</body>

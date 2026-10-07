@@ -1,0 +1,286 @@
+/*La Cabezera*/
+.header_1{
+	background-color: black;
+    height: 120px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 0 20px;
+}
+
+.ES_D{
+	display: flex;
+    align-items: center;
+}
+.ES_I{
+	display: flex;
+    align-items: center;
+}
+.A_H{
+	height: 25px;
+	padding: 5px;
+	background-color: rgb(126, 55, 96);
+	margin: 0 auto;
+	padding: 0;
+	text-align: center;
+}
+a{
+    margin:10px ;
+}
+
+/*Carrucel*/
+.contenedor_carrucel{
+	background-color: rgb(131, 124, 87);
+    margin: 0 auto;
+    height: 400px;
+    width: 94%;
+    padding: 10px;
+    overflow: hidden; 
+}
+.carrucel{
+	background-color: rgb(78, 3, 3);
+	width: 100%;
+	height: 400px;
+}
+.carrucel_imagenes{
+	display: flex;
+    transition: transform 0.5s;
+    height: 100%;
+}
+.caja-externa {
+	min-width: 100%; 
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.caja-externa img {
+	width: auto;
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/*Primer caja de texto*/
+.Ravel{
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+ .Ravel.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.titulo1{
+    background-color: rgb(109, 90, 90);
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+    padding: 0 20px;
+    padding-left: 50x;
+    padding-right: 50px
+
+}
+
+    
+.T2{
+    display: flex;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+h1{
+    margin-bottom: 30px;
+}
+.justificado{
+    text-align: justify;
+}
+
+/*Sabias que?*/
+
+.carta_primaria, .carta{
+    width: 120px;
+    height: 150px;
+}
+.carta_primaria {
+    perspective: 400px;
+    display: inline-block; /* para que se pongan lado a lado */
+    margin: 10px;
+} 
+.carta{
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s linear;
+}
+
+.carta .frontal, .carta .tracera{
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    position: absolute;
+}
+.carta .frontal{
+    background-color: seagreen;
+}
+.carta .tracera{
+    background-color: rgb(56, 24, 19);
+    transition: background-color 1s;
+    transform: rotateY(180deg);
+    position: absolute;
+    top: 0;
+
+}
+.carta_primaria:hover .carta{
+    transform: rotateY(180deg);
+}
+
+/*HISTORIA DE LA PTAR*/
+.HisC{
+    display: flex;
+    align-items: center;
+    gap:25px;
+    justify-content: flex-start;
+    flex-wrap: nowrap; 
+    overflow-x: auto; 
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 50%;
+    scroll-behavior: smooth;
+    cursor: grab;
+    height: 300px;
+    background-color: antiquewhite;
+  
+}
+.HisC {
+    scrollbar-width: none;     /* oculta scrollbar en Firefox */
+}
+
+
+.cartaH{
+    flex: 0 0 auto;               /* tamaño fijo, no se estira */
+    width: 120px;
+    height: 250px;
+    background-color: blue;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    scroll-snap-align: center;    /* snap al centro */
+    transition: transform 0.5s;
+    cursor: pointer;
+
+}
+
+
+/* Hover opcional */
+.cartaH:hover {
+    transform: scale(1.1);
+}
+
+/* Imagen dentro de la tarjeta (si tienes) */
+.cartaH img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+/* Bloque de texto dentro de la tarjeta */
+.cartaH .cartaTE {
+    position: absolute;
+    bottom: -50%;
+    padding: 15%;
+    opacity: 0;
+    transition: 0.5s bottom, 1.75s opacity;
+}
+
+.cartaTE p {
+    font-size: 14px;
+    margin-top: 3px;
+}
+
+/* Hover del bloque de texto */
+.cartaH:hover .cartaTE {
+    bottom: 0;
+    opacity: 1;
+}
+
+/* Cursor mientras arrastras */
+.HisC.active {
+    cursor: grabbing;
+}
+
+
+/*PROCESO*/
+
+.linea .img{
+    padding: 100px;
+}
+
+.boton{
+    background: linear-gradient(45deg, #3498db, #9b59b6);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    margin: 20px;
+    width: 180px;
+    height: 70px
+
+}
+
+#boton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.modal {
+  display: none;                
+  position: fixed;            
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5); 
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+  
+.primerC {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+.primerC > div:last-child {
+    width: 60%;
+}
+
+body{
+	background-color:rgb(255, 255, 255);
+	margin: 0;
+    padding: 0;
+
+}

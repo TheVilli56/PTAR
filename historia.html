@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="estilos/style_historia.css">
+</head>
+<body>
+
+	<div>
+		<header class="header_1">
+			<div class= "ES_D">
+				
+				<img src="ima/unamL.png" alt="Imagen 1", width="200px">
+			
+					
+			</div>
+			<div class= "ES_I">
+				<img src="ima/fesl.png" alt="Imagen 1", width="250px">
+					
+			</div>
+			
+		</header>
+		<div class="A_H">
+			<div class="AHA">
+				<a href="index.html" >Inicio</a> 
+				<a href="historia.html">Historia</a> 
+				<a href="proceso.html">Proceso</a> 
+				<a href="im.html">Impacto ambiental</a> 
+				<a href="proyectos.html">Proyectos</a> 
+				<a href="nosotros.html">Nosotros</a> 
+				<a href="Admin_page/index.html">Iniciar seción</a> 
+
+			</div>
+			<button class="menu-hamburguesa" id="menuToggle">☰</button>
+		</div>
+
+	</div>
+
+	<main>
+        <div class="azulH">
+            <script>
+            
+            document.addEventListener('DOMContentLoaded', () => {
+                
+                const reveals = document.querySelectorAll('.at');
+
+                const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    } else {
+                    entry.target.classList.remove('visible');
+                    }
+                });
+                }, {
+                threshold: 0.25 
+                });
+
+                reveals.forEach(el => observer.observe(el));
+            });
+            </script>
+            <div class="at">
+                <div class="tituloh">
+                    <h1 class="ht"><p class="tiH">Historia de la PTAR</p></h1>
+                </div>
+                
+                
+                <div class="HisC ">
+                    <div class=" cartaH">
+                        <div class="cartaI">
+                             <div class=" cartaIT">
+                                <p>2014 </p>
+                            </div> 
+                             <img src="ima/alto.jpeg" alt="Imagen 1", width="90px">
+                            
+                        </div>
+                        <div class=" cartaTE">
+                            <div class=" cartaE">
+                                <p>2014</p>
+                            </div>
+                            <div class=" cartaTe">
+                                <h3>Inicia Operaciones</h3>
+                                <p>Inicio de operaciones de la Planta de Tratamiento de Aguas Residuales de la FES Acatlán.
+    Se construye y comienza a operar una planta con biofiltros diseñados por el Instituto de Ingeniería de la UNAM. Su objetivo es reducir/eliminar el uso de agua potable mediante el tratamiento de aguas residuales para riego.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" cartaH">
+                        <div class="cartaI">
+                            <div class=" cartaIT">
+                                <p>2018  </p>
+                            </div> 
+                            <img src="ima/riego.jpg" alt="Imagen 1", width="90px">
+                        </div>
+                
+                        <div class=" cartaTE">
+                            <div class=" cartaE">
+                                <p>2018</p>
+                            </div>
+                            <div class=" cartaTe">
+                                <p>Inician las pruebas de riego </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" cartaH">
+                        <div class="cartaI">
+                            <div class=" cartaIT">
+                                <p>2019 </p>
+                            </div> 
+                            <img src="ima/dep.jpg" alt="Imagen 1", width="90px">
+                            
+                        </div>
+                        <div class=" cartaTE">
+                            <div class=" cartaE">
+                                <p>2019 </p>
+                            </div>
+                            <div class=" cartaTe">
+                                <p>El año con más agua enviada a riego, más de 5 millones de litros de agua residual tratada.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" cartaH">
+                        <div class="cartaI">
+                            <div class=" cartaIT">
+                                <p>2020 </p>
+                            </div> 
+                            <img src="ima/200.jpg" alt="Imagen 1", width="90px">
+                            
+                        </div>
+                        <div class=" cartaTE">
+                            <div class=" cartaE">
+                                <p>2020</p>
+                            </div>
+                            <div class=" cartaTe">
+                                <p>
+                                    <ul>
+                                        <li class="Listal">Debido a la Pandemia el proceso se detuvo.</li>
+                                        <li class="Listal">Septiembre: Revisión de estatus del proceso, los lodos del reactor aerobio se habían perdido.</li>
+                                        <li class="Listal">Reactivación del sistema biológico aerobio.</li>
+                                        
+                                    </ul>
+                
+                                </p>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" cartaH">
+                        <div class="cartaI">
+                            <div class=" cartaIT">
+                                <p>2021</p>
+                            </div> 
+                            <img src="ima/verde.jpeg" alt="Imagen 1", width="90px">
+                            
+                        </div>
+                        <div class=" cartaTE">
+                            <div class=" cartaE">
+                                <p>2021</p>
+                            </div>
+                            <div class=" cartaTe">
+                                <p>
+                                    <ul>
+                                        <li class="Listal">Se vuelve a detener el proceso debido a la segunda oleada de la Pandemia.</li>
+                                        <li class="Listal">Septiembre: Reactivación del sistema biológico de la PTAR.</li>
+                                        
+                                    </ul>
+                
+                                </p>
+ 
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" cartaH">
+                        <div class="cartaI">
+                            <div class=" cartaIT">
+                                <p>2022</p>
+                            </div> 
+                            <img src="ima/integra.jpeg" alt="Imagen 1", width="90px">
+                            
+                        </div>
+                        <div class=" cartaTE">
+                            <div class=" cartaE">
+                                <p>2022</p>
+                            </div>
+                            <div class=" cartaTe">
+                                <p>Se reanuda la actividad en la PTAR después del regreso paulatino de actividades</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" cartaH">
+                        <div class="cartaI">
+                            <div class=" cartaIT">
+                                <p>2023  </p>
+                            </div> 
+                            <img src="ima/paro.jpg" alt="Imagen 1", width="90px">
+                            
+                        </div>
+                        <div class=" cartaTE">
+                            <div class=" cartaE">
+                                <p>2023  </p>
+                            </div>
+                            <div class=" cartaTe">
+                                <p>Se detiene el proceso de la PTAR por paro estudiantil</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" cartaH">
+                        <div class="cartaI">
+                            <div class=" cartaIT">
+                                <p>2024  </p>
+                            </div> 
+                            <img src="ima/r.jpg" alt="Imagen 1", width="90px">
+                            
+                        </div>
+                        <div class=" cartaTE">
+                            <div class=" cartaE">
+                                <p>2024  </p>
+                            </div>
+                            <div class=" cartaTe">
+                                <p>Reactivación del sistema biológico Aerobio.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" cartaH">
+                        <div class="cartaI">
+                            <div class=" cartaIT">
+                                <p>2025   </p>
+                            </div> 
+                            <img src="ima/tor.jpeg" alt="Imagen 1", width="90px">
+                            
+                        </div>
+                        <div class=" cartaTE">
+                            <div class=" cartaE">
+                                <p>2025 </p>
+                            </div>
+                            <div class=" cartaTe">
+                                <p>Hasta este año se han utilizado más de 18 millones de litros de agua residual tratada en el riego de las áreas verdes de la zona deportiva.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                </div>
+                
+                
+                <script>
+                    const slider = document.querySelector('.HisC');
+                    let isDown = false;
+                    let startX;
+                    let scrollLeft;
+
+                    slider.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    slider.classList.add('active');
+                    startX = e.pageX - slider.offsetLeft;
+                    scrollLeft = slider.scrollLeft;
+                    });
+                    slider.addEventListener('mouseleave', () => isDown = false);
+                    slider.addEventListener('mouseup', () => isDown = false);
+                    slider.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - slider.offsetLeft;
+                    const walk = (x - startX) * 1.5; // velocidad del arrastre
+                    slider.scrollLeft = scrollLeft - walk;
+                    });
+                </script>
+
+            </div>
+            
+            
+        </div>
+	</main>	
+</body>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="estilos/style_nosotros.css">
+</head>
+<body>
+
+	<div>
+		<header class="header_1">
+			<div class= "ES_D">
+				
+				<img src="ima/unamL.png" alt="Imagen 1", width="200px">
+			
+					
+			</div>
+			<div class= "ES_I">
+				<img src="ima/fesl.png" alt="Imagen 1", width="250px">
+					
+			</div>
+			
+		</header>
+		<div class="A_H">
+			<div class="AHA">
+				<a href="index.html" >Inicio</a> 
+				<a href="historia.html">Historia</a> 
+				<a href="proceso.html">Proceso</a> 
+				<a href="im.html">Impacto ambiental</a> 
+				<a href="proyectos.html">Proyectos</a> 
+				<a href="nosotros.html">Nosotros</a> 
+				<a href="Admin_page/index.html">Iniciar seción</a> 
+
+			</div>
+			<button class="menu-hamburguesa" id="menuToggle">☰</button>
+		</div>
+
+	</div>
+
+	<main>
+		<div class="no">
+			<div>
+				<div class="nosotrosA">
+					<h1>Técnicos Académicos de la PTAR</h1>
+					<div class="carasA">
+						<div class="carasAB" data-info="Dr. Omar Reyes Martínez - Especialista en tratamiento de aguas residuales con más de 15 años de experiencia en el campo.">
+							<h3 class="NM">Dr. Omar Reyes Martínez</h3>
+							<img class="carasCen" src="ima/m.jpg" width="250px" alt="Dr. Omar Reyes">
+							<div class="info-text">Dr. Omar Reyes Martínez.</div>
+						</div>
+						<div class="carasAB" data-info="Mtro. Mario Chávez Montoya - Experto en procesos biológicos de tratamiento y gestión de proyectos.">
+							<h3 class="NM">Mtro. Mario Chávez Montoya</h3>
+							<img class="carasCen" src="ima/o.jpg" width="250px" alt="Mtro. Mario Chávez">
+							<div class="info-text">Mtro. Mario Chávez Montoya.</div>
+						</div>
+					</div>	
+					
+					<div id="popupInfo" class="popup-info"></div>
+				</div>
+
+			</div>
+			<div>
+				<div class="nosotrosA">
+					<h1>Colaboradores</h1>
+					
+					<div class="carasA">
+						<div class="carasAB" data-info="Ing. Laura Sánchez - Responsable del análisis de calidad de agua y monitoreo de parámetros.">
+							<h3 class="NM">Mtra. Malagón Juárez Norma Angélica</h3>
+							<img class="carasCen" src="ima/WhatsApp Image 2025-11-26 at 10.51.29 AM.jpeg" width="250px" >
+							<div class="info-text"></div>
+						</div>
+						
+					</div>
+					<div class="carasA">
+						<div class="carasAB" data-info="Ing. Laura Sánchez - Responsable del análisis de calidad de agua y monitoreo de parámetros.">
+							<h3 class="NM">Mtra. Lopez Blanco Alma</h3>
+							<img class="carasCen" src="" width="250px" >
+							<div class="info-text"></div>
+						</div>
+						
+					</div>
+					<div id="popupInfo" class="popup-info"></div>
+				</div>
+
+			</div>
+			
+		</div>
+		
+		<script>
+			// Animación de aparición al hacer scroll
+			document.addEventListener('DOMContentLoaded', () => {
+				const reveals = document.querySelectorAll('.no');
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('visible');
+						} else {
+							entry.target.classList.remove('visible');
+						}
+					});
+				}, {
+					threshold: 0.25 
+				});
+				reveals.forEach(el => observer.observe(el));
+			});
+			
+			// Mostrar información al hacer clic en las tarjetas
+			const caras = document.querySelectorAll('.carasAB');
+			const popup = document.getElementById('popupInfo');
+			
+			caras.forEach(cara => {
+				cara.addEventListener('click', function(e) {
+					// Ocultar todos los textos de información primero
+					document.querySelectorAll('.info-text').forEach(text => {
+						text.classList.remove('visible');
+					});
+					
+					// Mostrar el texto de información debajo de la imagen
+					const infoText = this.querySelector('.info-text');
+					infoText.classList.add('visible');
+					
+					
+					
+					// Calcula posición cerca del div clickeado
+					const rect = cara.getBoundingClientRect();
+					popup.style.left = (rect.right + window.scrollX + 10) + 'px';
+					popup.style.top = (rect.top + window.scrollY) + 'px';
+					
+					e.stopPropagation();
+				});
+			});
+			
+			// Ocultar información al hacer clic en cualquier parte
+			window.addEventListener('click', function() {
+				popup.style.display = 'none';
+				// También ocultar todos los textos de información
+				document.querySelectorAll('.info-text').forEach(text => {
+					text.classList.remove('visible');
+				});
+			});
+		</script>
+	</main>	
+</body>
+</html>

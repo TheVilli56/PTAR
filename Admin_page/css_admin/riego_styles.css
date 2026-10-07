@@ -1,0 +1,810 @@
+body {
+    margin: 0;
+    /* CAMBIO: Usar Arial */
+    font-family: 'Arial', sans-serif; 
+    color: white;
+    overflow-y: auto; 
+    position: relative;
+    min-height: 100vh;
+    /* CAMBIO: Fondo del body a #08345c */
+    background-color: #08345c; 
+}
+
+.background-image {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+.background-image::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); 
+    z-index: -1;
+}
+
+/* CONTENEDOR DE ENCABEZADO */
+.header-container {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+    /* CAMBIO: Fondo del header-container a #08345c */
+    background-color: #08345c; 
+    margin-bottom: 0;
+    box-shadow: 0 1px 0 0 #08345c; 
+}
+
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* CAMBIO: Color de la barra superior a #08345c */
+    background-color: #08345c;
+    padding: 10px 20px;
+    border-bottom: none; 
+    margin-bottom: 0; 
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+}
+
+.unam-logo {
+    /* AJUSTE: Ancho según el código proporcionado */
+    width: 300px; 
+    height: auto;
+    margin-right: 10px;
+    filter: invert(100%);
+}
+
+.logo-text {
+    /* AJUSTE: Tamaño de fuente según el código proporcionado */
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.acatlan-logo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.acatlan-logo {
+    /* AJUSTE: Ancho según el código proporcionado */
+    width: 300px;
+    height: auto;
+    margin-bottom: 5px;
+    filter: invert(100%);
+}
+
+.acatlan-text {
+    text-align: right;
+    /* AJUSTE: Tamaño de fuente según el código proporcionado */
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.navbar, .sub-navbar {
+    display: flex;
+    justify-content: center;
+    /* Mantenemos el amarillo */
+    background-color: #f7a900;
+    padding: 10px 0;
+    margin-top: 0; 
+    border-top: none;
+    border-bottom: none;
+}
+
+.nav-link, .sub-nav-link {
+    /* CAMBIO: Color del texto de la navbar a blanco */
+    color: white;
+    text-decoration: none;
+    padding: 0 20px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.nav-link.active, .sub-nav-link.active {
+    /* El enlace activo se sigue subrayando */
+    text-decoration: underline;
+}
+
+.nav-link:hover, .sub-nav-link:hover {
+    /* CAMBIO: Color del texto de la navbar al pasar el mouse a #08345c para contraste */
+    color: #08345c;
+}
+
+.data-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    height: auto;
+    min-height: calc(100vh - 120px); 
+    overflow-y: visible;
+}
+
+/* --- ESTILOS PARA LA TARJETA DE FILTROS Y TABLA (VISUALIZAR) --- */
+.filters-card {
+    /* CAMBIO: Fondo de la tarjeta a #08345c semi-transparente */
+    background-color: rgba(8, 52, 92, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    width: 90%;
+    max-width: 1200px;
+    margin-bottom: 20px;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-group label {
+    font-weight: bold;
+    /* Mantenemos blanco */
+    color: white; 
+}
+
+.filters-card select,
+.filters-card input,
+.filters-card button {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    background-color: white;
+    /* CAMBIO: Texto oscuro para los campos de input y select */
+    color: #2b3b4f;
+}
+
+.filters-card button {
+    /* Mantenemos el color amarillo del botón */
+    background-color: #f7a900;
+    /* CAMBIO: Texto de los botones a blanco para que se vea */
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filters-card button:hover {
+    background-color: #ffc44d;
+}
+
+.table-container {
+    /* CAMBIO: Fondo de la tabla a #08345c semi-transparente */
+    background-color: rgba(8, 52, 92, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 1200px;
+    overflow-x: auto;
+}
+
+#tabla-datos {
+    width: 100%;
+    border-collapse: collapse;
+    /* Texto de la tabla es blanco */
+    color: white; 
+}
+
+#tabla-datos th,
+#tabla-datos td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#tabla-datos thead th {
+    background-color: rgba(247, 169, 0, 0.8);
+    /* CAMBIO: Texto de los encabezados de tabla a blanco */
+    color: white;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+#tabla-datos tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.paginacion {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.paginacion button {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    /* CAMBIO: Texto de los botones de paginación a oscuro */
+    color: #2b3b4f;
+    cursor: pointer;
+}
+
+.paginacion button.active {
+    background-color: #f7a900;
+    color: white;
+    font-weight: bold;
+}
+
+.paginacion button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.content-section {
+    display: none;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.content-section.active {
+    display: flex;
+}
+
+/* --- ESTILOS PARA LA TARJETA DE FORMULARIO ÚNICA (REGISTRAR/ELIMINAR) --- */
+.form-card {
+    /* CAMBIO: Fondo de la tarjeta a #08345c semi-transparente */
+    background-color: rgba(8, 52, 92, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 900px; 
+    margin: 20px auto;
+}
+
+.form-card h2 {
+    color: #f7a900;
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid rgba(247, 169, 0, 0.5); 
+    padding-bottom: 10px;
+}
+
+/* --- DISPOSICIÓN DEL FORMULARIO DE REGISTRO EN 2 COLUMNAS (CSS GRID) --- */
+#form-registro {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px 30px;
+}
+
+/* Estilo para inputs, selects y textareas */
+#form-registro input:not([type="submit"]),
+#form-registro select,
+#form-registro textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    /* CAMBIO: Texto de los campos a oscuro */
+    color: #2b3b4f;
+    background-color: white;
+}
+
+#form-registro label {
+    font-weight: bold;
+    color: white;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Hace que Observaciones ocupe las dos columnas */
+#form-registro textarea {
+    grid-column: 1 / -1; 
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* Estilo del botón Registrar */
+#btn-registrar {
+    grid-column: 1 / -1;
+    padding: 12px 20px;
+    background-color: #f7a900;
+    /* CAMBIO: Texto del botón a blanco */
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 50%;
+    justify-self: center;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#btn-registrar:hover {
+    background-color: #ffc44d;
+}
+
+/* --- SEPARADOR (HR) --- */
+hr {
+    border: 0;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin: 30px 0;
+}
+
+/* --- DISPOSICIÓN DEL FORMULARIO DE ELIMINACIÓN (FLEXBOX) --- */
+#form-eliminar {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Asegura que los elementos del formulario de eliminación se alineen correctamente */
+#form-eliminar label, 
+#form-eliminar input, 
+#form-eliminar button {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+    flex-grow: 0; 
+    flex-shrink: 0;
+}
+
+#form-eliminar label {
+    font-weight: bold;
+    color: white;
+    padding: 0; 
+}
+
+#form-eliminar input[type="number"] {
+    max-width: 120px;
+    border: 1px solid #ddd;
+    /* CAMBIO: Texto del campo a oscuro */
+    color: #2b3b4f;
+    background-color: white;
+}
+
+#btn-eliminar {
+    background-color: #F44336;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+#btn-eliminar:hover {
+    background-color: #D32F2F;
+}
+
+/* Mensajes de estado */
+#mensaje-status {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    /* Aseguramos que el texto sea blanco */
+    color: white;
+}
+
+#mensaje-status.success {
+    background-color: #4CAF50;
+}
+
+#mensaje-status.error {
+    background-color: #F44336;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2. Clase para que un elemento ocupe todo el ancho del grid */
+.full-width {
+    grid-column: 1 / -1; 
+}
+
+/* 3. Ajuste del Grid Template para el formulario de registro */
+#form-registro {
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 30px;
+}
+
+/* 4. Estilos para títulos de sección (H3) dentro del formulario */
+.form-card h3 {
+    grid-column: 1 / -1; 
+    color: #f7a900;
+    text-align: center;
+    margin: 25px 0 15px 0; 
+    border-bottom: 1px solid rgba(247, 169, 0, 0.5);
+    padding-bottom: 10px;
+}
+
+/* 5. Estilos para las líneas separadoras (HR) dentro del formulario */
+.form-card hr.full-width {
+    grid-column: 1 / -1;
+    border: none;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin: 20px 0;
+}
+
+/* 6. Ajuste de labels y inputs dentro de los grupos */
+.input-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: white;
+}
+
+.input-group input,
+.input-group select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    /* CAMBIO: Texto de los campos a oscuro */
+    color: #2b3b4f;
+    background-color: white;
+}
+
+/* 7. Centrar el botón 'Registrar' que ocupa todo el ancho */
+#form-registro .full-width button[type="submit"] {
+    display: block; 
+    width: 50%;     
+    margin: 10px auto 0 auto; 
+}
+
+/* 8. Ajuste para el formulario de eliminación (ya usa flexbox, solo refinamos) */
+#form-eliminar {
+    grid-column: 1 / -1; 
+}
+
+.tab-link {
+    /* Mantenemos blanco */
+    color: white; 
+    text-decoration: none;
+    padding: 0 15px; 
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* 2. Estilo para el enlace activo de la sub-barra */
+.tab-link.active {
+    text-decoration: underline;
+}
+
+/* 3. Estilo para cuando el mouse pasa sobre el enlace */
+.tab-link:hover {
+    /* CAMBIO: Color del hover a #08345c */
+    color: #08345c; 
+    text-decoration: underline;
+}
+
+/* 4. Asegurar que los enlaces de la sub-navbar se separen correctamente */
+.sub-navbar {
+    gap: 20px; 
+}
+
+.graph-filters-card {
+    /* CAMBIO: Fondo de la tarjeta a #08345c semi-transparente */
+    background-color: rgba(8, 52, 92, 0.9);
+    max-width: 1300px; 
+    flex-wrap: nowrap; 
+    overflow-x: auto; 
+    justify-content: space-around; 
+}
+
+.graph-filters-card h2 {
+    grid-column: 1 / -1; 
+    width: 100%;
+    text-align: center;
+    color: #f7a900;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    border-bottom: 1px solid rgba(247, 169, 0, 0.5);
+    padding-bottom: 10px;
+}
+
+.graph-container {
+    background-color: rgba(255, 255, 255, 0.9); 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 1200px;
+    height: 500px; 
+    margin-top: 20px;
+    position: relative;
+    /* CAMBIO: Texto de la gráfica a oscuro */
+    color: #2b3b4f; 
+}
+
+/* Ajuste específico para los selects dentro de la tarjeta de filtros de gráfica */
+.graph-filters-card select {
+    min-width: 120px;
+}
+
+/* Estilo para el botón de Generar Gráfica */
+#generar-grafica {
+    /* CAMBIO: Fondo del botón a #08345c */
+    background-color: #08345c;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+#generar-grafica:hover {
+    /* CAMBIO: Hover del botón */
+    background-color: #06456f;
+}
+
+#total-volumen-container {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f7f9fc; 
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.1em;
+    /* CAMBIO: Texto del contenedor a oscuro */
+    color: #333;
+}
+
+#total-volumen-container strong {
+    /* CAMBIO: Color azul para destacar el resultado a #08345c */
+    color: #08345c; 
+}
+
+/* Estilo para el botón de descarga */
+#descargar-grafica {
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+
+    /* CAMBIO: Colores basados en el pantone azul */
+    background-color: #08345c; 
+    color: white; 
+    box-shadow: 0 4px #062a4d; 
+}
+
+/* Efecto Hover */
+#descargar-grafica:hover {
+    /* Tono un poco más claro al pasar el ratón */
+    background-color: #0a4f89; 
+    box-shadow: 0 5px #062a4d;
+    transform: translateY(-2px);
+}
+
+/* Efecto Activo (al hacer click) */
+#descargar-grafica:active {
+    /* Oscurecer al presionar */
+    background-color: #062a4d; 
+    box-shadow: 0 2px #062a4d;
+    transform: translateY(2px); 
+}
+
+.btn-modificar, .btn-eliminar {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 2px;
+    transition: background-color 0.3s;
+    font-size: 13px;
+    color: white; /* Texto blanco en los botones de acción */
+}
+
+.btn-modificar {
+    background-color: #007bff; /* Azul */
+}
+
+.btn-modificar:hover {
+    background-color: #0056b3;
+}
+
+.btn-eliminar {
+    background-color: #dc3545; /* Rojo */
+}
+
+.btn-eliminar:hover {
+    background-color: #c82333;
+}
+
+
+/* --- ESTILOS DEL MODAL --- */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Posición fija */
+    z-index: 2000; /* Alto z-index para estar por encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto; /* Habilitar scroll si es necesario */
+    background-color: rgba(0,0,0,0.8); /* Fondo negro semi-transparente */
+}
+
+.modal-content {
+    background-color: rgba(8, 52, 92, 0.95); /* Fondo similar a las tarjetas */
+    margin: 5% auto; /* 5% arriba y centrado */
+    padding: 30px;
+    border: 1px solid #f7a900;
+    border-radius: 10px;
+    width: 90%; 
+    max-width: 700px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+}
+
+.modal-content h2 {
+    color: #f7a900;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(247, 169, 0, 0.5);
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.close-button {
+    color: #f7a900;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilos de formulario dentro del modal */
+#form-modificar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Asegurar que las observaciones y el botón ocupen todo el ancho */
+#form-modificar textarea, 
+#form-modificar .btn-submit {
+    grid-column: 1 / -1; 
+}
+
+#form-modificar label {
+    color: white;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#form-modificar input,
+#form-modificar select,
+#form-modificar textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    color: #2b3b4f; /* Texto oscuro */
+    background-color: white;
+    box-sizing: border-box;
+}
+
+.btn-submit {
+    padding: 12px 20px;
+    background-color: #f7a900;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: #ffc44d;
+}
+
+/* Mensajes de estado dentro del modal */
+#modal-mensaje-status {
+    margin-bottom: 15px;
+}
+
+/* Separación para el contenedor de campos del modal */
+#modal-fields-container {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: inherit;
+    gap: inherit;
+}
+
+.paginacion {
+    text-align: center; /* Centrar la paginación */
+    margin-top: 20px;
+}
+
+.pagination {
+    list-style: none; /* Elimina los puntos de la lista */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Muestra los elementos en línea */
+    justify-content: center;
+}
+
+.page-item {
+    margin: 0 5px;
+    display: inline-block;
+}
+
+/* Estilos para los enlaces (botones) */
+.page-link {
+    display: block;
+    padding: 8px 12px;
+    border: 1px solid #36a4d2; /* Color de borde de tu diseño */
+    color: #ffffff; /* Texto blanco, como en tu tabla */
+    background-color: #0b4f8d; /* Color de fondo azul oscuro */
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.page-link:hover {
+    background-color: #36a4d2; /* Color de hover */
+    cursor: pointer;
+}
+
+/* Estilo para la página activa */
+.page-item.active .page-link {
+    background-color: #d1a938; /* Color activo (amarillo/naranja) */
+    border-color: #d1a938;
+    color: #000000;
+}
+
+/* Estilo para elementos deshabilitados */
+.page-item.disabled .page-link {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

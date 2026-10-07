@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="estilos/style_proyectos.css">
+</head>
+<body>
+
+	<div>
+		<header class="header_1">
+			<div class= "ES_D">
+				
+				<img src="ima/unamL.png" alt="Imagen 1", width="200px">
+			
+					
+			</div>
+			<div class= "ES_I">
+				<img src="ima/fesl.png" alt="Imagen 1", width="250px">
+					
+			</div>
+		</header>
+		<div class="A_H">
+			<div class="AHA">
+				<a href="index.html" >Inicio</a> 
+				<a href="historia.html">Historia</a> 
+				<a href="proceso.html">Proceso</a> 
+				<a href="im.html">Impacto ambiental</a> 
+				<a href="proyectos.html">Proyectos</a> 
+				<a href="nosotros.html">Nosotros</a> 
+				<a href="Admin_page/index.html">Iniciar seción</a> 
+
+			</div>
+			<button class="menu-hamburguesa" id="menuToggle">☰</button>
+		</div>
+
+	</div>
+
+	<main>
+		<script>
+		
+		document.addEventListener('DOMContentLoaded', () => {
+			
+			const reveals = document.querySelectorAll('.Pro');
+
+			const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+				entry.target.classList.add('visible');
+				} else {
+				entry.target.classList.remove('visible');
+				}
+			});
+			}, {
+			threshold: 0.25 
+			});
+
+			reveals.forEach(el => observer.observe(el));
+		});
+		</script>
+		<div class="Pro">
+			<div class="cajaI">
+				<h1>Investigación noticias </h1>
+				<p>
+					La Planta de Tratamiento de Aguas Residuales de la FES Acatlán es una fuente constante de innovación y actividad, por lo que ha generado múltiples apariciones en medios, informes y espacios de divulgación dentro y fuera de la universidad, los cuales puedes ver a continuación:
+
+				</p>
+
+				<div class="carrucel">
+					<div class="notificaciones" id="carruselImagenes">
+						<!-- Cada imagen ahora está envuelta en un enlace -->
+						<a href="https://blogs.acatlan.unam.mx/saladeprensa/2022/03/08/manejo-sustentable-del-agua-en-acatlan/" target="_blank">
+							<img src="ima/NOT1.jpg" alt="Noticia 1 - UNAM">
+						</a>
+						<a href="https://blogs.acatlan.unam.mx/saladeprensa/2025/04/10/la-planta-de-tratamiento-de-aguas-residuales-es-sustentable/" target="_blank">
+							<img src="ima/NOT2.jpg" alt="Noticia 2 - FES Acatlán">
+						</a>
+						<a href="https://blogs.acatlan.unam.mx/saladeprensa/2025/03/20/planta-de-tratamiento-de-aguas-genera-beneficio-integral-a-la-comunidad/" target="_blank">
+							<img src="ima/NOT3.jpg" alt="Noticia 3 - Gaceta UNAM">
+						</a>
+						<a href="https://blogs.acatlan.unam.mx/saladeprensa/2023/02/07/premian-a-universitario-por-trabajo-sobre-la-planta-de-tratamiento-de-aguas-residuales/" target="_blank">
+							<img src="ima/NOT4.jpg" alt="Noticia 4 - DGCS UNAM">
+						</a>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="Pro">
+			<div class="cajaI">
+				<div class="cajaADC">
+					<h1 class="cent1">Información y contacto</h1>
+					<p	 class="cent">	
+						La PTAR está abierta a la comunidad universitaria y al público interesado en conocer más sobre su funcionamiento, impacto ambiental y aportaciones académicas. Agenda una visita guiada a la PTAR para recorrer las instalaciones, conocer el proceso completo de tratamiento y su papel en la sustentabilidad de la UNAM.
+					</p>
+					<div class="cajaADCabajo">
+						<h3 class="cent2">¿Interesado en investigación, tesis, prácticas o servicio social? </h3>
+						<p class="cent2">Contáctanos para fechas y requisitos.</p>
+						<p class="cent2">ptar@acatlan.unam.mx </p>
+						<p class="cent2">Responsable: </p>
+						<p class="cent2">Dr. Omar Reyes Martínez</p>
+						<p class="cent2">Mtro. Mario Chávez Montoya</p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+				
+	</main>	
+</body>

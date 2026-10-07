@@ -1,0 +1,276 @@
+body{
+	background-color:rgb(227, 237, 248);
+	margin: 0;
+    padding: 0;
+
+}
+/*La Cabezera*/
+.header_1{
+	background-color: #123456;
+    height: auto;
+    min-height: 100px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 0 auto; 
+    
+    flex-wrap: wrap;
+}
+.ES_D{
+    gap: 40px;
+}
+
+.ES_D, .ES_I {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; 
+    
+}
+
+
+.A_H {
+    height: auto;
+    min-height: 50px;
+    padding: 0;
+    background-color: #D59F0F;
+    margin: 0 auto; 
+   
+}
+
+.AHA {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 90px; 
+    flex-wrap: wrap; 
+}
+
+.AHA a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    font-family: Arial, sans-serif; 
+    text-align: justify;
+}
+
+.AHA a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+h2{
+    font-size: 50px;
+}
+
+
+@media (max-width: 1024px) {
+    .header_1 {
+        padding: 10px 3%;
+        min-height: 90px;
+    }
+    
+    .ES_D img {
+        width: 60px;
+    }
+    
+    .ES_I img {
+        width: 130px;
+    }
+    
+    .AHA {
+        gap: 20px;
+        padding: 8px 15px;
+    }
+    
+    .AHA a {
+        font-size: 14px;
+        padding: 4px 8px;
+    }
+}
+
+
+
+
+@media (max-width: 400px) {
+    .AHA {
+        gap: 8px;
+    }
+    
+    .AHA a {
+        font-size: 11px;
+        padding: 2px 4px;
+    }
+    
+    .ES_D img {
+        width: 40px;
+    }
+    
+    .ES_I img {
+        width: 90px;
+    }
+}
+
+
+@media (min-width: 1400px) {
+    .header_1, .A_H {
+        margin: 0 auto;
+    }
+}
+
+.menu-hamburguesa {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+
+@media (max-width: 480px) {
+    .menu-hamburguesa {
+        display: block;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+    }
+    
+    .AHA {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #D59F0F;
+        padding: 15px;
+        gap: 10px;
+        z-index: 1000;
+    }
+    
+    .AHA.mostrar {
+        display: flex;
+    }
+}
+h1{
+    color: #123456;
+}
+
+.no {
+    background-color: white;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.no.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nosotrosA {
+    background-color: white;
+    
+
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 2.2rem;
+    
+    padding-bottom: 10px;
+}
+
+.carasA {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 10px;
+    padding-bottom: 20px;
+    
+}
+
+.NM {
+    color: white;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.carasAB {
+    background-color: #123456;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.75);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carasAB:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.9);
+}
+
+.carasAB img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+.info-text {
+    color: white;
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 5px;
+    width: 100%;
+    display: none; /* Oculto por defecto */
+}
+
+.info-text.visible {
+    display: block; /* Mostrar cuando tenga la clase visible */
+}
+
+.popup-info {
+    display: none;
+    position: absolute;
+    background: #fff;
+    border: 1px solid #888;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px #ccc;
+    z-index: 2000;
+    min-width: 150px;
+    color: #222;
+}
+
+@media (max-width: 768px) {
+    .carasA {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .carasAB {
+        width: 90%;
+    }
+}

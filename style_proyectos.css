@@ -1,0 +1,35 @@
+body{
+	background-color:rgb(255, 255, 255);
+	margin: 0;
+    padding: 0;
+
+}
+/*La Cabezera*/
+.header_1{
+	background-color: black;
+    height: 120px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 0 20px;
+}
+
+.ES_D{
+	display: flex;
+    align-items: center;
+}
+.ES_I{
+	display: flex;
+    align-items: center;
+}
+.A_H{
+	height: 25px;
+	padding: 5px;
+	background-color: rgb(126, 55, 96);
+	margin: 0 auto;
+	padding: 0;
+	text-align: center;
+}
+a{
+    margin:10px ;
+}

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="estilos/style_index.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body >
+	
+	<div id="loadingOverlay">
+        <div class="contador-inicial">
+            <div class="gota-container" id="gotaContainer"></div>
+            <div class="contador-texto" id="contadorInicial">0 Litros</div>
+            <div class="texto-carga">Agua tratada usados en riego.</div>
+            
+        </div>
+    </div>
+
+
+	 <div id="contenidoPrincipal">
+        <!-- Tu contenido web completo aquí -->
+        <div class="divGot"></div>
+            <div class="divGot">
+					
+					<div class="got">
+						<div class="boton-3d" id="boton3D">
+							<div class="etiqueta-boton">+230,000 L</div>
+						</div>
+
+						<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+						<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+						<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+						<script>
+							// --- Configuración del canvas pequeño ---
+							const botonContainer = document.getElementById('boton3D');
+							const width = botonContainer.clientWidth;
+							const height = botonContainer.clientHeight;
+
+							// --- Escena ---
+							const scene = new THREE.Scene();
+							scene.background = new THREE.Color(0xf8f8f8); // Fondo claro
+							
+							// Cámara con ángulo más pequeño para el canvas reducido
+							const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 1000);
+							
+							// Renderer configurado para el tamaño del botón
+							const renderer = new THREE.WebGLRenderer({ 
+								antialias: true,
+								alpha: true // Permite fondo transparente si lo necesitas
+							});
+							renderer.setSize(width, height);
+							botonContainer.appendChild(renderer.domElement);
+
+							// --- Luz mejorada para vista pequeña ---
+							const light = new THREE.DirectionalLight(0xffffff, 1);
+							light.position.set(3, 5, 5);
+							scene.add(light);
+							
+							const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+							scene.add(ambientLight);
+
+							// --- Cargar modelo ---
+							const loader = new THREE.GLTFLoader(); 
+							let modeloCargado = null;
+
+							loader.load('gotaG.glb', function(gltf) {
+								const modelo = gltf.scene;
+								modeloCargado = modelo;
+
+								// Ajustar escala para el botón pequeño
+								modelo.scale.set(1.5, 1.5, 1.5);
+								
+								// Centrar el modelo
+								const box = new THREE.Box3().setFromObject(modelo);
+								const center = box.getCenter(new THREE.Vector3());
+								modelo.position.sub(center);
+
+								scene.add(modelo);
+
+							}, undefined, function(error){
+								console.error('Error cargando modelo:', error);
+							});
+
+							
+							// --- Cámara ---
+							camera.position.z = 8;
+	
+							
+							
+						</script>
+
+					</div>
+
+				</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+    
+    <script>
+    // --- VARIABLES GLOBALES ---
+		let modeloCargado1 = null;
+		let contadorActual = 0;
+		const contadorMaximo = 18166408;
+		let escenaInicial = null;
+		let rendererInicial = null;
+		let camaraInicial = null;
+		let contadorCompletado = false;
+
+		// --- INICIAR TODO CUANDO LA PÁGINA CARGE ---
+		window.addEventListener('load', function() {
+			iniciarPantallaInicial();
+		});
+
+		function iniciarPantallaInicial() {
+			const loadingOverlay = document.getElementById('loadingOverlay');
+			const contadorInicial = document.getElementById('contadorInicial');
+
+			// Configurar la escena 3D para la pantalla inicial
+			configurarEscenaInicial();
+
+			// Cargar el modelo de la gota
+			const loader = new THREE.GLTFLoader();
+			loader.load('gotaG.glb', function(gltf) {
+				const modelo = gltf.scene;
+				modeloCargado1 = modelo;
+
+				// Ajustar escala y posición para la pantalla grande
+				modelo.scale.set(3.0, 3.0, 3.0);
+				
+				// Centrar el modelo
+				const box = new THREE.Box3().setFromObject(modelo);
+				const center = box.getCenter(new THREE.Vector3());
+				modelo.position.sub(center);
+				
+				escenaInicial.add(modelo);
+
+				// Iniciar animación de rotación suave
+				animarRotacionInicial();
+
+				// Iniciar el contador automáticamente
+				iniciarConteoAutomatico();
+
+			}, undefined, function(error){
+				console.error('Error cargando modelo:', error);
+				// Si hay error, iniciar contador igualmente
+				iniciarConteoAutomatico();
+			});
+
+		
+
+			function iniciarConteoAutomatico() {
+				const duracionTotal = 4000; 
+				const intervalos = duracionTotal / 16; // ~60fps
+				const incrementoPorFrame = contadorMaximo / intervalos;
+
+				let frameCount = 0;
+				const totalFrames = intervalos;
+
+				function actualizarContador() {
+					frameCount++;
+					contadorActual = Math.min(Math.floor((frameCount / totalFrames) * contadorMaximo), contadorMaximo);
+					
+					// Formatear número con separadores de miles
+					const numeroFormateado = contadorActual.toLocaleString('es-MX');
+					contadorInicial.textContent = numeroFormateado + ' L';
+
+					if (frameCount < totalFrames) {
+						requestAnimationFrame(actualizarContador);
+					} else {
+						contadorCompletado = true;
+						
+						// CAMBIO PRINCIPAL: Abrir automáticamente la página
+						// sin esperar click
+						setTimeout(() => {
+							mostrarPaginaWeb();
+						}, 500); // Medio segundo de pausa después de llegar al máximo
+					}
+				}
+
+				actualizarContador();
+			}
+		}
+
+		// --- CONFIGURAR ESCENA INICIAL ---
+		function configurarEscenaInicial() {
+			const container = document.getElementById('gotaContainer');
+			const width = container.clientWidth;
+			const height = container.clientHeight;
+
+			escenaInicial = new THREE.Scene();
+			escenaInicial.background = null; // Sin fondo
+
+			camaraInicial = new THREE.PerspectiveCamera(35, width / height, 0.1, 1000);
+			camaraInicial.position.z = 15;
+
+			rendererInicial = new THREE.WebGLRenderer({ 
+				antialias: true,
+				alpha: true  // ← HABILITAR ALPHA
+			});
+			rendererInicial.setSize(width, height);
+			rendererInicial.setClearColor(0x000000, 0); // Completamente transparente
+
+			// Agregar el canvas y luego aplicar opacidad via CSS
+			container.appendChild(rendererInicial.domElement);
+			rendererInicial.domElement.style.opacity = '1'; 
+
+			// Luces para la escena inicial
+			const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
+			directionalLight.position.set(8, 12, 8);
+			escenaInicial.add(directionalLight);
+			
+			const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+			escenaInicial.add(ambientLight);
+
+			// Animación inicial
+			function animateInicial() {
+				requestAnimationFrame(animateInicial);
+				rendererInicial.render(escenaInicial, camaraInicial);
+			}
+			animateInicial();
+		}
+
+		// --- ANIMACIÓN DE ROTACIÓN INICIAL ---
+		function animarRotacionInicial() {
+			function rotar() {
+				requestAnimationFrame(rotar);
+				
+				if (modeloCargado1) {
+					modeloCargado1.rotation.y += 0.001;
+					modeloCargado1.rotation.x = Math.sin(Date.now() * 0.0001) * 0.01;
+				}
+			}
+			rotar();
+		}
+
+		// --- MOSTRAR LA PÁGINA WEB COMPLETA ---
+		function mostrarPaginaWeb() {
+			const loadingOverlay = document.getElementById('loadingOverlay');
+			const contenidoPrincipal = document.getElementById('contenidoPrincipal');
+
+			// LIMPIAR RECURSOS DE THREE.JS de la pantalla inicial
+			if (rendererInicial) {
+				rendererInicial.dispose();
+				rendererInicial.forceContextLoss();
+			}
+			
+			if (modeloCargado1) {
+				// Limpiar geometrías y materiales
+				modeloCargado1.traverse((child) => {
+					if (child.isMesh) {
+						if (child.geometry) child.geometry.dispose();
+						if (child.material) {
+							if (Array.isArray(child.material)) {
+								child.material.forEach(material => material.dispose());
+							} else {
+								child.material.dispose();
+							}
+						}
+					}
+				});
+			}
+
+			// Animación de fade out del overlay
+			loadingOverlay.style.opacity = '0';
+			loadingOverlay.style.transition = 'opacity 1s ease-in-out';
+
+			setTimeout(() => {
+				// Ocultar completamente el overlay
+				loadingOverlay.style.display = 'none';
+				
+				// Mostrar el contenido principal
+				contenidoPrincipal.style.display = 'block';
+				
+				// Iniciar cualquier otra funcionalidad de tu página
+				iniciarFuncionalidadesPagina();
+
+			}, 1000);
+		}
+
+		// --- INICIAR OTRAS FUNCIONALIDADES DE LA PÁGINA ---
+		function iniciarFuncionalidadesPagina() {
+			// Aquí puedes inicializar el resto de tu página web
+			// Por ejemplo: tu modelo 3D grande de la casa, animaciones, etc.
+			console.log("Página web completamente cargada y lista");
+		}
+
+		// --- POR SEGURIDAD: Forzar mostrar la página después de 10 segundos ---
+		setTimeout(() => {
+			if (document.getElementById('loadingOverlay').style.display !== 'none') {
+				mostrarPaginaWeb();
+			}
+		}, 8000);
+	</script>
+
+	
+
+	<div>
+
+		<header class="header_1">
+			<div class= "ES_D">
+				
+				<img src="ima/unamL.png" alt="Imagen 1", width="200px">
+			
+					
+			</div>
+			<div class= "ES_I">
+				<img src="ima/fesl.png" alt="Imagen 1", width="250px">
+					
+			</div>
+			
+		</header>
+		<div class="A_H">
+			<div class="AHA">
+				<a href="index.html" >Inicio</a> 
+				<a href="historia.html">Historia</a> 
+				<a href="proceso.html">Proceso</a> 
+				<a href="im.html">Impacto ambiental</a> 
+				<a href="proyectos.html">Proyectos</a> 
+				<a href="nosotros.html">Nosotros</a> 
+				<a href="Admin_page/index.html">Iniciar seción</a> 
+
+			</div>
+			<button class="menu-hamburguesa" id="menuToggle">☰</button>
+		</div>
+
+	</div>
+
+	<main>
+		<div class="contenedor_carrucel">
+            <div class="carrucel">
+				<button class="carrucel-btn carrucel-btn-izquierdo" onclick="cambiarSlide(-1)">‹</button>
+            
+                <div class="carrucel_imagenes" id="imagenes">
+                    <div class="caja-externa-texto">
+						<h1>Planta de Tratamiento de Aguas Residuales (PTAR) </h1>
+						<h2 >La PTAR de la FES Acatlán transforma el agua residual en bienestar ambiental.</h2>
+						<img src="ima/alto2.jpeg" alt="imagenfes1"/>
+                        
+                    </div>
+                    <div class="caja-externa">
+						 <img src="ima/com.jpeg" alt="imagenfes2"/>
+                       
+                    </div>
+                    <div class="caja-externa">
+						<img src="ima/10.jpg" alt="imagenfes3"/>
+                        
+                    </div>
+                </div>
+
+				<button class="carrucel-btn carrucel-btn-derecho" onclick="cambiarSlide(1)">›</button>
+            </div>
+			<script>
+                const imagenes = document.getElementById('imagenes');
+                const deslizar = document.querySelectorAll('.caja-externa, .caja-externa-texto' );
+                let index = 0;
+				function cambiarSlide(direccion) {
+					clearInterval(intervalo);
+					
+					index += direccion;
+					if (index < 0) index = deslizar.length - 1;
+					if (index >= deslizar.length) index = 0;
+					
+					imagenes.style.transform = `translateX(${-index * 100}%)`;
+					
+					// Reiniciar automático después de 3 segundos
+					intervalo = setInterval(() => {
+						index = (index + 1) % deslizar.length;
+						imagenes.style.transform = `translateX(${-index * 100}%)`;
+					}, 9000);
+				}
+
+				// Iniciar automático al cargar
+				intervalo = setInterval(() => {
+					index = (index + 1) % deslizar.length;
+					imagenes.style.transform = `translateX(${-index * 100}%)`;
+				}, 30000);
+
+            </script>
+        
+        </div>
+		<script>
+		
+		document.addEventListener('DOMContentLoaded', () => {
+			
+			const reveals = document.querySelectorAll('.Ravel');
+
+			const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+				entry.target.classList.add('visible');
+				} else {
+				entry.target.classList.remove('visible');
+				}
+			});
+			}, {
+			threshold: 0.25 
+			});
+
+			reveals.forEach(el => observer.observe(el));
+		});
+		</script>
+
+		<div class="Ravel">
+			<div class="titulo1">
+				<div>
+					<h1>¿Qué es la PTAR<br/></h1>
+					<p class ="justificado">
+						
+						La Planta de Tratamiento de Aguas Residuales (PTAR) de la Facultad de Estudios Superiores Acatlán es una infraestructura clave en el camino hacia un campus sustentable. Su principal objetivo es tratar las aguas residuales generadas por la comunidad universitaria, para ser reutilizadas en el riego de áreas verdes de la zona deportiva. Esta planta entró en operación en el año 2014 y representa una solución ambientalmente responsable al manejo del agua en la Facultad, alineándose con los principios de la Universidad Sustentable. Su operación no solo reduce el uso de agua potable mediante el riego, sino que también disminuye la carga de contaminantes vertidos al sistema de drenaje municipal. La PTAR es un espacio funcional, educativo y de innovación, donde convergen el conocimiento técnico y el compromiso con el medio ambiente.
+
+					</p>
+
+				</div>
+				<div class="T2">
+					<img src="ima/alto.jpeg" alt="imagenfes2"/>
+					
+				</div>
+			</div>	
+		</div>
+		
+		
+		<div class="Ravel">
+			<div class="sabias">
+				<div>
+					<h1>¿sabías qué? ...</h1>
+					<p class ="justificado">A pesar de que la Planta de Tratamiento de Aguas Residuales de la FES Acatlán es una instalación con importantes beneficios ambientales, aún existen muchas creencias erróneas sobre su funcionamiento y el uso que se le da al agua tratada. Aquí se aclaran algunos de los mitos más comunes:
+</p>
+				</div>
+				
+				<div class="cartaVolteable">
+					<div class="carta_primaria">
+						<div class="carta">
+							<div class="frontal">
+								<h5>El agua tratada no se usa en los bebederos de la FES Acatlán.</h5>
+								<img src="ima/q.jpg" >
+							</div>
+							<div class="tracera">
+								<p>El agua tratada no se utiliza para consumo humano bajo ninguna circunstancia. Su uso está restringido a actividades no potables, como el riego de áreas verdes.<br><br> Los bebederos del campus se abastecen de agua potable que cumple con los estándares oficiales de calidad.</p>
+								
+							</div>
+						</div>
+					</div>
+					<div class="carta_primaria">
+						<div class="carta">
+							<div class="frontal">
+								<h5>El agua tratada no es peligrosa para las plantas.</h5>
+								<img src="ima/w.jpg" >
+							</div>
+							<div class="tracera">
+								<p>Al contrario, el agua tratada contiene nutrientes como nitrógeno y fósforo que benefician a la vegetación. Además, el proceso de tratamiento asegura que no cause daño a las áreas verdes de la zona deportiva.</p>
+								
+							</div>
+						</div>
+					</div>
+
+					<div class="carta_primaria">
+						<div class="carta">
+							<div class="frontal">
+								<h5>Se pueden hacer actividades académicas en la PTAR.</h5>
+								<img src="ima/e.jpg"  >
+							</div>
+							<div class="tracera">
+								<p>La planta es un espacio vivo de aprendizaje: estudiantes realizan prácticas profesionales, visitas técnicas y proyectos de investigación enfocados en tratamiento de aguas y sostenibilidad.</p>
+								
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class= "cartaVolteable">
+					<div class="carta_primaria">
+						<div class="carta">
+							<div class="frontal">
+								<h5>El agua tratada no huele mal.</h5>
+								<img src="ima/r.jpg"  >
+							</div>
+							<div class="tracera">
+								<p>Debido al sistema de eliminación de malos olores (Biofiltros) y al tren de tratamiento funcional, el proceso y el agua tratada no huelen mal.
+</p>
+								
+							</div>
+						</div>
+					</div>
+					
+					<div class="carta_primaria">
+						<div class="carta">
+							<div class="frontal">
+								<h5>Lo que era un residuo ahora es recurso.</h5>
+								<img src="ima/y.jpg" >
+							</div>
+							<div class="tracera">
+								<p>Desde 2018 que inicia el riego, se han utilizado casi 20 millones de litros de agua residual tratada, con el riego se brinda mantenimiento .</p>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="centrar">
+				<a href="rec/index.html" class="botonPTAR">Conoce la PTAR!</a>
+			</div>
+		</div>		
+	</main>	
+</body>

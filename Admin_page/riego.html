@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTAR FES Acatlán - Riego</title>
+    <link rel="stylesheet" href="css_admin/riego_styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+</head>
+<body>
+
+    <header class="top-bar">
+        <div class="logo-section">
+            <img src="images/logoUnam.png" alt="UNAM Logo">
+            <div class="logo-text">
+            </div>
+        </div>
+        <div class="logo-section acatlan-logo-section">
+            <img src="images/logoAcatlan.png" alt="FES Acatlán Logo">
+            <div class="acatlan-text">
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="#" class="nav-link active">Riego</a>
+        <a href="sst.html" class="nav-link">Sólidos de Muestreo</a>
+    </nav>
+    
+    <nav class="sub-navbar">
+        <a href="#visualizar-datos" class="sub-nav-link active">Visualizar Datos</a>
+        <a href="#registrar-datos" class="sub-nav-link">Registrar Datos</a>
+        <a href="#graficas" class="sub-nav-link">Gráficas</a>
+    </nav>
+
+    <main class="data-content">
+        <div id="visualizar-datos" class="content-section active">
+            <div class="filters-card">
+            <div class="filter-group">
+                <label for="mes">Mes:</label>
+                <select id="mes">
+                    <option value="">Todos</option>
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                </select>
+            </div>
+                <div class="filter-group">
+                    <label for="anio">Año:</label>
+                    <select id="anio">
+                        <option value="">Todos</option>
+                        </select>
+                </div>
+                <button id="buscar-datos">Buscar</button>
+            </div>
+            <div id="mensaje-status-visualizar"></div> <div class="table-container">
+                <table id="tabla-datos">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Fecha</th>
+                            <th>Zona</th>
+                            <th>Volumen Usado</th>
+                            <th>Responsable</th>
+                            <th>Acciones</th> 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="6">Cargando datos...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="paginacion"></div>
+        </div>
+
+        <div id="registrar-datos" class="content-section">
+            <div class="form-card">
+                <h2>Registrar Nuevo Dato de Riego</h2>
+                <form id="form-registro">
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" name="fecha" required>
+
+                    <label for="hora_inicio">Hora de Inicio:</label>
+                    <input type="time" step="1" id="hora_inicio" name="hora_inicio" required>
+
+                    <label for="hora_termino">Hora de Término:</label>
+                    <input type="time" step="1" id="hora_termino" name="hora_termino" required>
+
+                    <label for="id_zona">Zona de Riego:</label>
+                    <select id="id_zona" name="id_zona" required>
+                    </select>
+
+                    <label for="bomba_presion_bcm_01a">Bomba 01A (PSI):</label>
+                    <input type="number" step="0.01" id="bomba_presion_bcm_01a" name="bomba_presion_bcm_01a">
+
+                    <label for="bomba_presion_bcm_01b">Bomba 01B (PSI):</label>
+                    <input type="number" step="0.01" id="bomba_presion_bcm_01b" name="bomba_presion_bcm_01b">
+                    
+                    <label for="bomba_presion_bcm_01r">Bomba 01R (PSI):</label>
+                    <input type="number" step="0.01" id="bomba_presion_bcm_01r" name="bomba_presion_bcm_01r">
+
+                    <label for="nivel_tac_01_inicio">Nivel TAC 01 (Inicio):</label>
+                    <input type="number" step="0.01" id="nivel_tac_01_inicio" name="nivel_tac_01_inicio">
+
+                    <label for="nivel_tac_01_termino">Nivel TAC 01 (Término):</label>
+                    <input type="number" step="0.01" id="nivel_tac_01_termino" name="nivel_tac_01_termino">
+
+                    <label for="volumen_usado">Volumen Usado (m³):</label>
+                    <input type="number" step="0.01" id="volumen_usado" name="volumen_usado">
+                    
+                    <label for="observaciones">Observaciones:</label>
+                    <textarea id="observaciones" name="observaciones"></textarea>
+
+                    <label for="id_responsable">Responsable:</label>
+                    <select id="id_responsable" name="id_responsable" required>
+                    </select>
+
+                    <button type="submit" id="btn-registrar">Registrar</button>
+                </form>
+
+                <hr>
+                
+                <div id="mensaje-status"></div>
+            </div>
+            
+        </div>
+                <div id="graficas" class="content-section">
+            <div class="filters-card graph-filters-card">
+                <h2>Filtros de Gráfica de Riego por Volumen (m³)</h2>
+                <div class="filter-group">
+                    <label for="zona-grafica">Zona de Riego:</label>
+                    <select id="zona-grafica">
+                        <option value="todos">Todas las Zonas</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="mes-inicio-grafica">Mes Inicio:</label>
+                    <select id="mes-inicio-grafica">
+                        </select>
+                </div>
+                <div class="filter-group">
+                    <label for="anio-inicio-grafica">Año Inicio:</label>
+                    <select id="anio-inicio-grafica">
+                        </select>
+                </div>
+                <div class="filter-group">
+                    <label for="mes-fin-grafica">Mes Fin:</label>
+                    <select id="mes-fin-grafica">
+                        </select>
+                </div>
+                <div class="filter-group">
+                    <label for="anio-fin-grafica">Año Fin:</label>
+                    <select id="anio-fin-grafica">
+                        </select>
+                </div>
+                <button id="generar-grafica">Generar Gráfica</button>
+            </div>
+            <div class="graph-container">
+                <canvas id="volumenRiegoChart"></canvas>
+            </div>
+            <div id="total-volumen-container">
+            </div>
+            <button id="descargar-grafica" class="btn btn-primary">
+                Descargar Gráfica (JPG)
+            </button>
+        </div>
+    </main>
+    
+    <div id="modal-modificar" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Modificar Registro de Riego</h2>
+            <div id="modal-mensaje-status" class="message-box"></div>
+            <form id="form-modificar">
+                <input type="hidden" id="modal_id" name="id">
+                <input type="hidden" id="modal_tabla" name="tabla" value="registro_operacion">
+                
+                <div id="modal-fields-container">
+                    </div>
+                
+                <button type="submit" class="btn btn-submit">Guardar Cambios</button>
+            </form>
+        </div>
+    </div>
+    <img src="images/fondo.jpeg" alt="Fondo de planta de tratamiento" class="background-image">
+
+    <script src="scripts/riego.js"></script>
+    <script src="scripts/graficas_riego.js"></script>
+</body>
+</html>

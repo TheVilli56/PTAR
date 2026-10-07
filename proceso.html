@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="estilos/style_proceso.css">
+</head>
+<body>
+
+	<div>
+		<header class="header_1">
+			<div class= "ES_D">
+				
+				<img src="ima/unamL.png" alt="Imagen 1", width="200px">
+			
+					
+			</div>
+			<div class= "ES_I">
+				<img src="ima/fesl.png" alt="Imagen 1", width="250px">
+					
+			</div>
+			
+		</header>
+		<div class="A_H">
+			<div class="AHA">
+				<a href="index.html" >Inicio</a> 
+				<a href="historia.html">Historia</a> 
+				<a href="proceso.html">Proceso</a> 
+				<a href="im.html">Impacto ambiental</a> 
+				<a href="proyectos.html">Proyectos</a> 
+				<a href="nosotros.html">Nosotros</a> 
+				<a href="Admin_page/index.html">Iniciar seción</a> 
+
+			</div>
+			<button class="menu-hamburguesa" id="menuToggle">☰</button>
+		</div>
+
+	</div>
+    <main>
+        <script>
+            
+            document.addEventListener('DOMContentLoaded', () => {
+                
+                const reveals = document.querySelectorAll('.Como');
+
+                const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    } else {
+                    entry.target.classList.remove('visible');
+                    }
+                });
+                }, {
+                threshold: 0.25 
+                });
+
+                reveals.forEach(el => observer.observe(el));
+            });
+            </script>
+        <div class="Como">
+            <div class="cf">
+                <h1>¿Cómo funciona?</h1>
+                <p>Del agua cruda al riego sustentable: así transforma la PTAR cada gota</p>
+            </div>
+        
+            
+            <div class="mapa">
+                <div class="contenedor-escalable">
+                    <div class="contenedor-mapa">
+
+                        <div class=" carta1">
+                            <div class="cartaI">
+                                <div class=" cartaIT">
+                                    <p>Agua Cruda</p>
+                                </div> 
+                                
+                            </div>
+                    
+                            <div class=" cartaTE pos1">
+                                <div class=" cartaE">
+                                    <p>Agua Cruda </p>
+                                </div>
+                                <div class=" cartaTe">
+                                    <p>Es el agua residual de la FES Acatlán tal como llega a la PTAR, proveniente del uso de sanitarios. Contiene sólidos, materia orgánica, grasas, contaminantes disueltos y microorganismos. Su composición puede variar mucho a lo largo del día, es importante conocer su caudal y características para operar el sistema adecuadamente. </p>
+                                </div>
+                                <div class="imagen">
+                                    <img src="ima/ag.jpeg" alt="Imagen 1", width="190px">
+                                </div>
+                            </div>
+                        </div>
+
+                        <svg  width="100" height="100" style="position: absolute; left:235px ; top: 45px;">
+                            <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#00454f"/>
+                            </marker>
+                            </defs>
+                            <line x1="20" y1="30" x2="70" y2="30" stroke="#00454f" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        </svg>
+
+                        <div class=" carta2">
+                            <div class="cartaI">
+                                <div class=" cartaIT">
+                                    <p>Rejilla Gruesa</p>
+                                </div> 
+                                
+                            </div>
+                    
+                            <div class=" cartaTE pos2">
+                                <div class=" cartaE">
+                                    <p>Reja de sólidos gruesos </p>
+                                </div>
+                                <div class=" cartaTe">
+                                    <p>Es la primera barrera mecánica del tratamiento. Se cuenta con un contenedor al ingreso de cárcamo de almacenamiento de agua cruda que retiene sólidos grandes como plásticos, telas, ramas o basura. Esta etapa protege a los equipos posteriores, evitando obstrucciones y reduciendo daños en bombas o estructuras.</p>
+                                </div>
+                                <div class="imagen"> 
+                                    <img src="ima/rg.jpeg" alt="Imagen 1", width="190px">
+                                </div>
+                            </div>
+                        </div>
+
+                        <svg width="100" height="100" style="position: absolute; left:510px ; top: 45px;">
+                            <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#00454f"/>
+                            </marker>
+                            </defs>
+                            <line x1="5" y1="30" x2="55" y2="30" stroke="#00454f" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        </svg>
+
+                        <div class=" carta3">
+                            <div class="cartaI">
+                                <div class=" cartaIT">
+                                    <p>Tanque Ecualizador</p>
+                                </div> 
+                                
+                            </div>
+                    
+                            <div class=" cartaTE pos3">
+                                <div class=" cartaE">
+                                    <p>Tanque Ecualizador</p>
+                                </div>
+                                <div class=" cartaTe">
+                                    <p>El inicio de operación o arranque del tren de tratamiento de la planta comienza en el tanque de ecualización, aquí se homogenizan el caudal y la carga contaminante del agua cruda. Su función es amortiguar variaciones fuertes del flujo y de la concentración de materia orgánica además del pH y la Temperatura, permitiendo que los procesos biológicos posteriores trabajen de manera más estable y eficiente. </p>
+                                </div>
+                                <div class="imagen">
+                                    <img src="ima/alto.jpeg" alt="Imagen 1", width="190px">
+                                </div>
+                            </div>
+                        </div>
+
+                        <svg width="100" height="100" style="position: absolute; left:785px ; top: 45px;">
+                            <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#00454f"/>
+                            </marker>
+                            </defs>
+                            <line x1="0" y1="30" x2="40" y2="30" stroke="#00454f" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        </svg>
+
+                        <div class=" carta4">
+                            <div class="cartaI">
+                                <div class=" cartaIT">
+                                    <p>Criba Estática Autolimpiante</p>
+                                </div> 
+                                
+                            </div>
+                    
+                            <div class=" cartaTE pos4">
+                                <div class=" cartaE">
+                                    <p>Criba Estática Autolimpiante</p>
+                                </div>
+                                <div class=" cartaTe">
+                                    <p>Es un equipo de separación fina que retiene sólidos más pequeños que los de la rejilla gruesa, generalmente entre 0.5 y 1 mm. El agua pasa por una rejilla inclinada mientras los sólidos quedan adheridos y, gracias a la propia caída del agua, se desprenden y se conducen a un contenedor. Reduce la carga de sólidos al reactor anaerobio.</p>
+                                </div>
+                                <div class="imagen">
+                                    <img src="ima/Criba.jpeg" alt="Imagen 1", width="190px">
+                                </div>
+                            </div>
+                        </div>
+
+                        <svg width="1000" height="200" style="position: absolute; left:100px; top:120px;">
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="5" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#00454f"/>
+                            </marker>
+                        </defs>
+                        <polyline points="830,20 830,100 50,100 50,150 " fill="none" stroke="#00454f" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        </svg>
+                        
+
+                        <div class=" carta5">
+                            <div class="cartaI">
+                                <div class=" cartaIT">
+                                    <p>Reactor Aerobio</p>
+                                </div> 
+                                
+                            </div>
+                    
+                            <div class=" cartaTE pos5">
+                                <div class=" cartaE">
+                                    <p>Rector Aerobio </p>
+                                </div>
+                                <div class=" cartaTe">
+                                    <p>Después del tratamiento anaerobio, el agua pasa a un reactor aerobio donde microorganismos que requieren oxígeno degradan la materia orgánica remanente y transforman los nutrientes. La aireación mantiene a los microorganismos activos y favorece la oxidación completa, en esta etapa se requiere control de los lodos ya que como producto de la degradación hay generación de Biomasa.</p>
+                                </div>
+                                <div class="imagen">
+                                    <img src="ima/verde.jpeg" alt="Imagen 1", width="190px">
+                                </div>
+                            </div>
+                        </div>
+
+                        <svg width="100" height="300" style="position: absolute; left:100px ; top: 410px;">
+                            <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="5" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#00454f"/>
+                            </marker>
+                            </defs>
+                            <line x1="50" y1=" 10" x2="50" y2="70" stroke="#00454f" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        </svg>
+
+                        <div class=" carta6">
+                            <div class="cartaI">
+                                <div class=" cartaIT">
+                                    <p>Clarificador Secundario</p>
+                                </div> 
+                                
+                            </div>
+                    
+                            <div class=" cartaTE pos6">
+                                <div class=" cartaE">
+                                    <p>Clarificador Secundario.</p>
+                                </div>
+                                <div class=" cartaTe">
+                                    <p>En el tanque Clarificador se separa el agua de los lodos. La sedimentación por gravedad permite que los sólidos biológicos se depositen en el fondo, mientras el agua limpia sale por la parte superior. Parte del lodo se recircula al reactor aerobio para mantener la biomasa activa, y el excedente se purga.</p>
+                                </div>
+                                <div class="imagen">
+                                    <img src="ima/cir.jpeg" alt="Imagen 1", width="190px">
+                                </div>
+                            </div>
+                        </div>
+
+                        <svg  width="100" height="100" style="position: absolute; left:235px ; top: 520px;">
+                            <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#00454f"/>
+                            </marker>
+                            </defs>
+                            <line x1="20" y1="30" x2="70" y2="30" stroke="#00454f" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        </svg>
+                        <svg width="100" height="100" style="position: absolute; left:510px ; top: 520px;">
+                            <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#00454f"/>
+                            </marker>
+                            </defs>
+                            <line x1="5" y1="30" x2="55" y2="30" stroke="#00454f" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        </svg>
+                        <svg width="100" height="100" style="position: absolute; left:785px ; top: 520px;">
+                            <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#00454f"/>
+                            </marker>
+                            </defs>
+                            <line x1="0" y1="30" x2="40" y2="30" stroke="#00454f" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        </svg>
+
+                        <div class=" carta7">
+                            <div class="cartaI">
+                                <div class=" cartaIT">
+                                    <p>Desinfección por Cloro</p>
+                                </div> 
+                                
+                            </div>
+                    
+                            <div class=" cartaTE pos7">
+                                <div class=" cartaE">
+                                    <p>Desinfección por Cloro</p>
+                                </div>
+                                <div class=" cartaTe">
+                                    <p>El agua clarificada se somete a un proceso de desinfección por contacto con cloro (hipoclorito de sodio al 13%) para eliminar microorganismos patógenos remanentes y coliformes, la desinfección se realiza en un sistema de canaletas tipo serpentín. Esta etapa es crucial para asegurar que el agua tratada sea segura para usos posteriores, como riego. El tiempo de contacto debe ser suficiente para garantizar una inactivación adecuada.</p>
+                                </div>
+                                <div class="imagen"> 
+                                    <img src="ima/Cloro.jpeg" alt="Imagen 1", width="190px">
+                                </div>
+                            </div>
+                        </div>
+       
+                        <div class=" carta8">
+                            <div class="cartaI">
+                                <div class=" cartaIT">
+                                    <p>Filtración (arena-grava y carbón activado)</p>
+                                </div> 
+                                
+                            </div>
+                    
+                            <div class=" cartaTE pos8">
+                                <div class=" cartaE">
+                                    <p>Filtración (arena-grava y carbón activado)</p>
+                                </div>
+                                <div class=" cartaTe">
+                                    <p>Los filtros de arena y grava eliminan sólidos finos y partículas suspendidas que pudieran quedar en el agua. Posteriormente, los filtros de carbón activado remueven compuestos orgánicos disueltos, colores y olores, mejorando significativamente la calidad final. Esta etapa pulidora es clave para usos más exigentes del agua.</p>
+                                </div>
+                                <div class="imagen">
+                                    <img src="ima/Solidos.jpeg" alt="Imagen 1", width="190px">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class=" carta10">
+                            <div class="cartaI">
+                                <div class=" cartaIT">
+                                    <p>Cisterna de agua tratada</p>
+                                </div> 
+                                
+                            </div>
+                    
+                            <div class=" cartaTE pos10">
+                                <div class=" cartaE">
+                                    <p>Cisterna de agua tratada</p>
+                                </div>
+                                <div class=" cartaTe">
+                                    <p>Una vez filtrada y desinfectada, el agua se almacena en una cisterna donde queda disponible para su distribución. Aquí se mantiene en condiciones seguras, evitando recontaminación y permitiendo regular el suministro según la demanda del uso final.</p>
+                                </div>
+                                <div class="imagen">
+                                    <img src="ima/Serpentin.jpeg" alt="Imagen 1", width="190px">
+                                </div>
+                            </div>
+                        </div>
+                        <svg width="1000" height="200" style="position: absolute; left:100px; top:600px;">
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="5" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#00454f"/>
+                            </marker>
+                        </defs>
+                        <polyline points="830,20 830,50 450,50 450,100 " fill="none" stroke="#00454f" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        </svg>
+
+                        <div class=" carta11">
+                            <div class="cartaI">
+                                <div class=" cartaIT">
+                                    <p>Reactor Anaerobio UASB</p>
+                                </div> 
+                                
+                            </div>
+                    
+                            <div class=" cartaTE pos11">
+                                <div class=" cartaE">
+                                    <p>Reactor Anaerobio UASB</p>
+                                </div>
+                                <div class=" cartaTe">
+                                    <p>El reactor UASB (Upflow Anaerobic Sludge Blanket) degrada la materia orgánica en ausencia de oxígeno mediante microorganismos anaerobios. El agua fluye de manera ascendente a través de un manto de lodos granulares especializados que transforman la materia orgánica en biogás. Es un proceso eficiente para altas cargas orgánicas y reduce considerablemente la DBO.</p>
+                                </div>
+                                <div class="imagen">
+                                    <img src="ima/cont.jpeg" alt="Imagen 1", width="190px">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+
+
+
+                    <div id="modal" class="modal">
+                        <div class="modal-content">
+                            <span id="closeBtn" class="close">&times;</span>
+                            <p id="modalText"></p>
+                        </div>
+                    </div>
+                    <script>
+
+                        function ajustarEscalaMapa() {
+                            const mapa = document.querySelector('.contenedor-mapa');
+                            const contenedor = document.querySelector('.contenedor-escalable');
+
+                            const anchoDisponible = contenedor ? contenedor.clientWidth : window.innerWidth;
+                            const anchoBase = 1500;
+                            const escala = Math.min(anchoDisponible / anchoBase, 1);
+
+                            mapa.style.transform = `scale(${escala})`;
+                        }
+
+
+                        window.addEventListener('load', ajustarEscalaMapa);
+                        window.addEventListener('resize', ajustarEscalaMapa);
+
+                        // 🔹 Sistema del modal
+                        const buttons = document.querySelectorAll('.boton');
+                        const modal = document.getElementById('modal');
+                        const closeBtn = document.getElementById('closeBtn');
+                        const modalText = document.getElementById('modalText');
+
+                        buttons.forEach(btn => {
+                            btn.addEventListener('click', () => {
+                                const info = btn.getAttribute('data-info');
+                                modalText.innerHTML = info;
+                                modal.style.display = 'flex';
+                            });
+                        });
+
+                        closeBtn.addEventListener('click', () => {
+                            modal.style.display = 'none';
+                        });
+
+                        window.addEventListener('click', (e) => {
+                            if (e.target === modal) {
+                                modal.style.display = 'none';
+                            }
+                        });
+                    </script>
+            
+
+                </div>
+            </div>
+
+        </div>
+		
+	</main>	
+</body>
